@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InnoLink — Where Overlooked Problems Meet Creative Problem-Solvers</title>
+  <meta name="description" content="InnoLink connects people experiencing real-world problems with students, researchers, and innovators who can solve them.">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+  <!-- Top Global Announcement / Usability Demo Banner -->
+  <aside class="demo-banner" aria-label="Prototype Notice">
+    <div class="demo-banner-content">
+      <span class="demo-pill">Prototype Demo</span>
+      <span>Fictional sample data for usability testing — Not a live validation platform.</span>
+    </div>
+    <div class="persona-switch-wrapper">
+      <label for="persona-select" style="font-size: 0.75rem; color: #94A3B8;">Tester View:</label>
+      <select id="persona-select" class="persona-select" aria-label="Select User Role Perspective">
+        <!-- Injected dynamically by js/app.js -->
+      </select>
+    </div>
+  </aside>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#/" class="nav-brand" aria-label="InnoLink Home">
+        <img src="assets/logo.png" alt="InnoLink Logo" class="brand-logo-img">
+        <span class="brand-badge">Prototype</span>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#/explore" class="nav-link">Explore Problems</a></li>
+          <li><a href="#/how-it-works" class="nav-link">How It Works & Trust</a></li>
+          <li><a href="#/roadmap" class="nav-link">Roadmap & Sponsors</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#/post" class="btn btn-primary btn-sm">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+          Post a Problem
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Dynamic Application Views -->
+  <main id="app" role="main"></main>
+
+  <!-- Global Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="assets/logo.png" alt="InnoLink Logo" style="height: 32px; width: auto; margin-bottom: 0.5rem;">
+          <p>
+            Connecting lived experience with technical capability. People know the problems. Problem-solvers bring the expertise. InnoLink connects them.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <ul class="footer-links">
+            <li><a href="#/explore" class="footer-link">Explore Problems</a></li>
+            <li><a href="#/post" class="footer-link">Post a Problem</a></li>
+            <li><a href="#/how-it-works" class="footer-link">Innovation Lifecycle</a></li>
+            <li><a href="#/roadmap" class="footer-link">Sponsored Challenges</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Roles</h4>
+          <ul class="footer-links">
+            <li><a href="#/post" class="footer-link">Problem Posters</a></li>
+            <li><a href="#/explore" class="footer-link">Students & Solvers</a></li>
+            <li><a href="#/how-it-works" class="footer-link">Expert Validators</a></li>
+            <li><a href="#/roadmap" class="footer-link">Challenge Sponsors</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-trust-box">
+            <strong>Trust & IP Notice</strong>
+            InnoLink surfaces real-world problems. Community votes indicate perceived interest, not technical validation. Posting does not settle or assign patent or IP rights.
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 InnoLink Prototype. Developed for concept validation and usability testing.
+        </div>
+        <div>
+          Click <strong>"🧪 Usability Tester Hub"</strong> to follow the test script or log validation feedback.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Module Entry Point -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
+

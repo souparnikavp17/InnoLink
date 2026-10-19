@@ -1,0 +1,101 @@
+/* ==========================================================================
+   InnoLink Design Tokens & Variables
+   Brand Identity:
+   - Inno Blue: #2D2E8E (Deep Indigo / Royal Blue)
+   - Link Green: #0FA968 (Vibrant Innovation Emerald)
+   ========================================================================== */
+
+:root {
+  /* Brand Palette */
+  --brand-inno: #2D2E8E;
+  --brand-inno-dark: #1E2063;
+  --brand-inno-light: #4447B5;
+  --brand-inno-subtle: #EEF0FD;
+
+  --brand-link: #0FA968;
+  --brand-link-dark: #0A824E;
+  --brand-link-light: #22C57B;
+  --brand-link-subtle: #E8F9F1;
+
+  --brand-gradient: linear-gradient(135deg, var(--brand-inno) 0%, #1c529e 60%, var(--brand-link) 100%);
+  --brand-gradient-subtle: linear-gradient(135deg, rgba(45, 46, 142, 0.05) 0%, rgba(15, 169, 104, 0.07) 100%);
+
+  /* Neutrals & Surfaces */
+  --bg-app: #F8FAFC;
+  --bg-surface: #FFFFFF;
+  --bg-surface-elevated: #FFFFFF;
+  --bg-muted: #F1F5F9;
+  --bg-subtle: #E2E8F0;
+
+  /* Typography Colors */
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #64748B;
+  --text-subtle: #94A3B8;
+  --text-inverse: #FFFFFF;
+
+  /* Border & Dividers */
+  --border-light: #E2E8F0;
+  --border-medium: #CBD5E1;
+  --border-focus: var(--brand-inno);
+
+  /* Status Colors */
+  --status-open-text: #1D4ED8;
+  --status-open-bg: #EFF6FF;
+  --status-open-border: #BFDBFE;
+
+  --status-proposed-text: #B45309;
+  --status-proposed-bg: #FFFBEB;
+  --status-proposed-border: #FDE68A;
+
+  --status-dev-text: #6D28D9;
+  --status-dev-bg: #F5F3FF;
+  --status-dev-border: #DDD6FE;
+
+  --status-solved-text: #047857;
+  --status-solved-bg: #ECFDF5;
+  --status-solved-border: #A7F3D0;
+
+  /* Impact Levels */
+  --impact-critical: #DC2626;
+  --impact-critical-bg: #FEF2F2;
+  --impact-high: #EA580C;
+  --impact-high-bg: #FFF7ED;
+  --impact-medium: #D97706;
+  --impact-medium-bg: #FFFBEB;
+  --impact-low: #059669;
+  --impact-low-bg: #ECFDF5;
+
+  /* Bounty & Sponsorship Highlights */
+  --bounty-gold: #B45309;
+  --bounty-gold-bg: #FEF3C7;
+  --bounty-gold-border: #F59E0B;
+  --bounty-gradient: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+
+  /* Elevation Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 9999px;
+
+  /* Typography System */
+  --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* Container Sizing */
+  --max-width: 1200px;
+  --nav-height: 72px;
+
+  /* Transition Speeds */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
