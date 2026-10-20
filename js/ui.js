@@ -1,5 +1,5 @@
 /* ==========================================================================
-   InnoLink UI Renderers & Component Views
+   InnoLink UI Renderers & Component Views — Modern, High-Legibility
    ========================================================================== */
 
 import { state } from './state.js';
@@ -53,20 +53,17 @@ export class UIRenderer {
 
   // ------------------------------------------------------------------------
   // 1. Landing View
+  // Removed "Real Problems, Real Solvers" banner at the beginning as requested
+  // Community Problems FIRST, Innovation Challenges AFTER
   // ------------------------------------------------------------------------
   renderLanding() {
     const problems = state.getProblems();
     const challenges = state.getSponsoredChallenges();
 
     this.app.innerHTML = `
-      <!-- Hero Section -->
+      <!-- Hero Section (Clean & Direct) -->
       <section class="hero-section">
         <div class="hero-container">
-          <div class="hero-brand-pill">
-            <span>✨ InnoLink Prototype</span>
-            <span>•</span>
-            <span>Democratizing Problem-Solving</span>
-          </div>
           <h1 class="hero-title">
             Where Overlooked Problems Meet <br>
             <span class="hero-title-highlight">Creative Problem-Solvers</span>
@@ -76,11 +73,11 @@ export class UIRenderer {
           </p>
           <div class="hero-actions">
             <a href="#/post" class="btn btn-primary btn-lg">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
               Post a Problem
             </a>
             <a href="#/explore" class="btn btn-secondary btn-lg">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
               Explore Problems
             </a>
             <a href="#/how-it-works" class="btn btn-subtle btn-lg">
@@ -91,30 +88,30 @@ export class UIRenderer {
           <div class="hero-stats-row">
             <div class="hero-stat-card">
               <div class="hero-stat-num">${problems.length}</div>
-              <div class="hero-stat-label">Real-World Problems</div>
+              <div class="hero-stat-label">Active Problems</div>
             </div>
             <div class="hero-stat-card">
               <div class="hero-stat-num">${CATEGORIES.length - 1}</div>
-              <div class="hero-stat-label">Active Impact Domains</div>
+              <div class="hero-stat-label">Impact Categories</div>
             </div>
             <div class="hero-stat-card">
               <div class="hero-stat-num">${challenges.length}</div>
-              <div class="hero-stat-label">Sponsored Challenges</div>
+              <div class="hero-stat-label">Funded Challenges</div>
             </div>
             <div class="hero-stat-card">
-              <div class="hero-stat-num">$40.5k</div>
-              <div class="hero-stat-label">Demo Bounty Awards</div>
+              <div class="hero-stat-num">₹31.5 Lakhs</div>
+              <div class="hero-stat-label">Award Bounties</div>
             </div>
           </div>
         </div>
       </section>
 
       <!-- Roles & Value Propositions -->
-      <section class="container" style="padding-top: 3.5rem; padding-bottom: 2rem;">
+      <section class="container" style="padding-top: 4rem; padding-bottom: 2rem;">
         <div class="section-header" style="text-align: center;">
           <span class="section-eyebrow">Who InnoLink Is Built For</span>
           <h2 class="section-title">Built for Everyone Who Touches Innovation</h2>
-          <p class="section-subtitle" style="margin: 0.5rem auto 0;">Whether you have encountered a daily friction point or have the tools to build a prototype, there is a role for you.</p>
+          <p class="section-subtitle" style="margin: 0.75rem auto 0;">Whether you have encountered a daily friction point or have the tools to build a prototype, there is a role for you.</p>
         </div>
 
         <div class="roles-grid">
@@ -145,28 +142,46 @@ export class UIRenderer {
         </div>
       </section>
 
-      <!-- Featured Sponsored Challenges Section (Prominent Landing Feature) -->
+      <!-- 1. COMMUNITY PROBLEMS SECTION FIRST -->
+      <section class="container" style="padding-top: 3.5rem; padding-bottom: 4rem;">
+        <div style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1.5rem;">
+          <div>
+            <span class="section-eyebrow">Community Problems</span>
+            <h2 class="section-title">Real-World Needs</h2>
+            <p class="section-subtitle">Real problems highlighted directly by people experiencing them.</p>
+          </div>
+          <a href="#/explore" class="btn btn-secondary btn-lg">
+            View All ${problems.length} Problems →
+          </a>
+        </div>
+
+        <div class="problems-grid">
+          ${problems.slice(0, 3).map(p => this.renderProblemCardHtml(p)).join('')}
+        </div>
+      </section>
+
+      <!-- 2. INNOVATION CHALLENGES AFTER IT -->
       <section class="sponsored-section">
         <div class="container">
           <div class="sponsored-header-row">
             <div>
               <span class="section-eyebrow" style="color: var(--bounty-gold);">Funded Innovation Challenges</span>
-              <h2 class="section-title">Featured Sponsored Challenges</h2>
+              <h2 class="section-title">Sponsored Innovation Challenges</h2>
               <p class="section-subtitle">
-                High-priority real-world problems funded by organizations, research foundations, and civic bodies with confirmed bounties.
+                High-priority problems funded by foundations, research laboratories, and civic bodies with confirmed bounties. Click any challenge box to explore full requirements.
               </p>
             </div>
             <div>
               <span class="badge badge-bounty">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                Demo Prototype Challenges
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                Verified Cash Bounties
               </span>
             </div>
           </div>
 
           <div class="challenge-grid">
             ${challenges.map(ch => `
-              <div class="challenge-card">
+              <a href="#/challenge/${ch.id}" class="challenge-card-box" aria-label="View ${ch.title}">
                 <div class="challenge-sponsor-bar">
                   <div class="sponsor-meta">
                     <div class="sponsor-avatar">${ch.sponsorAvatar}</div>
@@ -180,11 +195,11 @@ export class UIRenderer {
 
                 <div class="challenge-bounty-box">
                   <div>
-                    <span style="font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); display: block; font-weight: 700;">Award Pool</span>
+                    <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); display: block; font-weight: 800;">Award Bounty</span>
                     <span class="bounty-amount">${ch.bountyAmount}</span>
                   </div>
                   <div style="text-align: right;">
-                    <span style="font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); display: block; font-weight: 700;">Deadline</span>
+                    <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); display: block; font-weight: 800;">Deadline</span>
                     <span class="bounty-deadline">${ch.daysLeft} days left</span>
                   </div>
                 </div>
@@ -193,52 +208,212 @@ export class UIRenderer {
                 <p class="challenge-desc">${ch.problemSummary}</p>
 
                 <div class="challenge-reqs-preview">
-                  <strong>Key Deliverable & Target:</strong>
+                  <strong>Key Deliverable:</strong>
                   <span>${ch.requirements[0]}</span>
                 </div>
 
                 <div class="challenge-footer">
-                  <span style="font-size: 0.75rem; color: var(--text-muted);">Due ${ch.deadline}</span>
-                  <button class="btn btn-outline-inno btn-sm view-challenge-btn" data-challenge-id="${ch.id}">
-                    View Requirements & Details →
-                  </button>
+                  <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Due ${ch.deadline}</span>
+                  <span style="font-size: 0.95rem; font-weight: 700; color: var(--brand-inno); display: inline-flex; align-items: center; gap: 0.35rem;">
+                    View Challenge Page →
+                  </span>
                 </div>
-              </div>
+              </a>
             `).join('')}
           </div>
         </div>
       </section>
-
-      <!-- Featured Community Problems Preview -->
-      <section class="container" style="padding-top: 3.5rem; padding-bottom: 3.5rem;">
-        <div style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
-          <div>
-            <span class="section-eyebrow">Community Problems</span>
-            <h2 class="section-title">Trending Real-World Needs</h2>
-            <p class="section-subtitle">Problems highlighted directly by people experiencing them.</p>
-          </div>
-          <a href="#/explore" class="btn btn-secondary">
-            View All ${problems.length} Problems →
-          </a>
-        </div>
-
-        <div class="problems-grid">
-          ${problems.slice(0, 3).map(p => this.renderProblemCardHtml(p)).join('')}
-        </div>
-      </section>
     `;
-
-    // Attach listeners for sponsored challenge modal buttons
-    this.app.querySelectorAll('.view-challenge-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const chId = btn.getAttribute('data-challenge-id');
-        this.openChallengeModal(chId);
-      });
-    });
   }
 
   // ------------------------------------------------------------------------
-  // 2. Explore Feed View
+  // 2. Dedicated Sponsored Challenge Detail Page
+  // ------------------------------------------------------------------------
+  renderChallengeDetail(challengeId) {
+    const ch = state.getSponsoredChallengeById(challengeId);
+    if (!ch) {
+      this.app.innerHTML = `
+        <div class="container" style="text-align: center; padding: 4rem 1rem;">
+          <h2>Challenge Not Found</h2>
+          <p style="color: var(--text-secondary); margin: 1rem 0;">The sponsored challenge you are looking for does not exist.</p>
+          <a href="#/" class="btn btn-primary">Back to Home</a>
+        </div>
+      `;
+      return;
+    }
+
+    this.app.innerHTML = `
+      <div class="container">
+        <!-- Breadcrumbs -->
+        <div style="margin-bottom: 2rem; display: flex; align-items: center; gap: 0.65rem; font-size: 0.95rem; color: var(--text-muted);">
+          <a href="#/" style="color: var(--text-secondary); text-decoration: none; font-weight: 600;">← Back to Home</a>
+          <span>/</span>
+          <span>Sponsored Challenges</span>
+          <span>/</span>
+          <span style="color: var(--text-primary); font-weight: 700;">${ch.category}</span>
+        </div>
+
+        <!-- Challenge Hero Card -->
+        <div class="challenge-detail-hero">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <div class="sponsor-avatar" style="width: 52px; height: 52px; font-size: 1.25rem;">${ch.sponsorAvatar}</div>
+              <div>
+                <div style="font-size: 1.15rem; font-weight: 800; color: var(--text-primary);">${ch.sponsorName}</div>
+                <div style="font-size: 0.85rem; color: var(--text-muted);">${ch.sponsorType}</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <span class="badge badge-category">${ch.category}</span>
+              <span class="badge badge-bounty">${ch.bountyAmount} Bounty</span>
+            </div>
+          </div>
+
+          <h1 class="detail-title" style="margin-bottom: 1rem;">${ch.title}</h1>
+
+          <div style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; padding: 1.25rem 1.5rem; background: var(--bounty-gradient); border: 1.5px solid var(--bounty-gold-border); border-radius: var(--radius-lg); margin-top: 1.5rem;">
+            <div>
+              <span style="font-size: 0.75rem; text-transform: uppercase; font-weight: 800; color: var(--text-muted); display: block;">Prize Allocation</span>
+              <strong style="font-size: 1.15rem; color: var(--bounty-gold);">${ch.bountyNote}</strong>
+            </div>
+            <div style="border-left: 1.5px solid rgba(180, 83, 9, 0.2); padding-left: 2rem;">
+              <span style="font-size: 0.75rem; text-transform: uppercase; font-weight: 800; color: var(--text-muted); display: block;">Submission Deadline</span>
+              <strong style="font-size: 1.15rem; color: var(--text-primary);">${ch.deadline} (${ch.daysLeft} days remaining)</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="challenge-detail-grid">
+          <div style="display: flex; flex-direction: column; gap: 2rem;">
+            <div class="detail-card">
+              <h2 style="font-size: 1.45rem; font-weight: 800; margin-bottom: 1rem; color: var(--text-primary);">Problem Context & Motivation</h2>
+              <p style="font-size: 1.1rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.25rem;">
+                ${ch.details}
+              </p>
+              <div style="background: var(--bg-muted); border-radius: var(--radius-md); padding: 1.25rem; font-size: 1rem; color: var(--text-secondary); line-height: 1.6;">
+                <strong style="color: var(--text-primary); display: block; margin-bottom: 0.35rem;">Direct Real-World Impact:</strong>
+                ${ch.problemSummary}
+              </div>
+            </div>
+
+            <div class="detail-card">
+              <h2 style="font-size: 1.45rem; font-weight: 800; margin-bottom: 1rem; color: var(--text-primary);">Technical & Submission Requirements</h2>
+              <ul style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7; padding-left: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem;">
+                ${ch.requirements.map(req => `<li><strong>${req}</strong></li>`).join('')}
+              </ul>
+            </div>
+
+            <div class="detail-card">
+              <h2 style="font-size: 1.45rem; font-weight: 800; margin-bottom: 1rem; color: var(--text-primary);">Evaluation Criteria</h2>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                ${ch.evaluationCriteria.map(ec => `
+                  <div style="background: var(--bg-muted); border: 1.5px solid var(--border-light); padding: 1rem 1.25rem; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: space-between;">
+                    <span style="font-weight: 600; font-size: 1rem;">${ec.label}</span>
+                    <strong style="font-size: 1.25rem; color: var(--brand-inno);">${ec.weight}</strong>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 2rem;">
+            <div class="detail-card" style="background: var(--brand-inno-subtle); border-color: rgba(45, 46, 142, 0.2);">
+              <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--brand-inno);">Ready to Submit?</h3>
+              <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                Express interest or submit your technical proposal directly to the sponsor review panel.
+              </p>
+              <form id="challenge-submit-form" style="display: flex; flex-direction: column; gap: 1rem;">
+                <div>
+                  <label class="form-label" style="font-size: 0.9rem;" for="sub-team">Team / Innovator Name</label>
+                  <input type="text" id="sub-team" class="form-input" placeholder="e.g. BioSensor Labs, Sarah & Dev" required />
+                </div>
+                <div>
+                  <label class="form-label" style="font-size: 0.9rem;" for="sub-link">Prototype / Pitch Link</label>
+                  <input type="url" id="sub-link" class="form-input" placeholder="https://github.com/..." required />
+                </div>
+                <button type="submit" class="btn btn-green btn-lg" style="width: 100%;">
+                  Submit Proposal
+                </button>
+              </form>
+            </div>
+
+            <div class="detail-card">
+              <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0.5rem;">Eligibility Guidelines</h3>
+              <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+                ${ch.eligibility}
+              </p>
+              <div style="font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid var(--border-light); padding-top: 0.75rem;">
+                Have questions about specs? <a href="#/how-it-works" style="color: var(--brand-inno); font-weight: 700;">Review challenge policies →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    const form = this.app.querySelector('#challenge-submit-form');
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const team = this.app.querySelector('#sub-team').value;
+        this.showToast(`Proposal successfully submitted for ${team}!`, 'success');
+        form.reset();
+      });
+    }
+  }
+
+  // ------------------------------------------------------------------------
+  // 3. Problem Card HTML — FIXED: No overlap with text!
+  // ------------------------------------------------------------------------
+  renderProblemCardHtml(p) {
+    const isSupported = state.isProblemSupported(p.id);
+    const solCount = p.solutions ? p.solutions.length : 0;
+
+    return `
+      <a href="#/problem/${p.id}" class="problem-card">
+        <div class="problem-card-header">
+          <span class="badge badge-category">${p.category}</span>
+          <span class="badge ${this.getStatusBadgeClass(p.status)}">${p.status}</span>
+        </div>
+
+        <h3 class="problem-title">${p.title}</h3>
+        <p class="problem-excerpt">${p.description}</p>
+
+        <div class="problem-meta-row">
+          <span class="badge ${this.getImpactBadgeClass(p.impactLevel)}">
+            ${p.impactLevel} Impact
+          </span>
+          <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">
+            • Occurs: ${p.frequency || 'Regularly'}
+          </span>
+        </div>
+
+        <div class="author-tag">
+          <div class="author-avatar-sm">${p.author?.avatar || 'IN'}</div>
+          <span>Posted by <strong>${p.author?.name || 'Community Member'}</strong></span>
+        </div>
+
+        <div class="problem-card-footer">
+          <div class="problem-stats">
+            <span class="stat-item" title="People who experience this problem too">
+              <span style="color: ${isSupported ? 'var(--brand-link)' : 'inherit'};">🙌</span>
+              <strong>${p.supportedByCount || 0}</strong> support
+            </span>
+            <span class="stat-item" title="Proposed solutions">
+              <span>💡</span>
+              <strong>${solCount}</strong> ${solCount === 1 ? 'solution' : 'solutions'}
+            </span>
+          </div>
+          <span class="card-action-pill">
+            View Details →
+          </span>
+        </div>
+      </a>
+    `;
+  }
+
+  // ------------------------------------------------------------------------
+  // 4. Explore Feed View
   // ------------------------------------------------------------------------
   renderExplore(filters = {}) {
     const allProblems = state.getProblems();
@@ -247,7 +422,6 @@ export class UIRenderer {
     const activeStatus = filters.status || 'All';
     const activeSort = filters.sort || 'supported';
 
-    // Filter problems
     let filtered = allProblems.filter(p => {
       const matchCat = (activeCat === 'All') || (p.category === activeCat);
       const matchStatus = (activeStatus === 'All') || (p.status === activeStatus);
@@ -258,7 +432,6 @@ export class UIRenderer {
       return matchCat && matchStatus && matchSearch;
     });
 
-    // Sort
     if (activeSort === 'supported') {
       filtered.sort((a, b) => (b.supportedByCount || 0) - (a.supportedByCount || 0));
     } else if (activeSort === 'newest') {
@@ -269,21 +442,19 @@ export class UIRenderer {
 
     this.app.innerHTML = `
       <div class="container">
-        <div class="section-header" style="display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+        <div class="section-header" style="display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;">
           <div>
             <span class="section-eyebrow">Discover Needs</span>
             <h1 class="section-title">Explore Real-World Problems</h1>
             <p class="section-subtitle">Browse community problems, check validation stages, and find opportunities where your skills can make a difference.</p>
           </div>
-          <a href="#/post" class="btn btn-primary">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+          <a href="#/post" class="btn btn-primary btn-lg">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
             Post a Problem
           </a>
         </div>
 
-        <!-- Controls Box -->
         <div class="explore-controls-box">
-          <!-- Search input -->
           <div class="search-input-wrapper">
             <span class="search-input-icon">🔍</span>
             <input 
@@ -295,7 +466,6 @@ export class UIRenderer {
             />
           </div>
 
-          <!-- Category filter pills -->
           <div class="category-filter-pills">
             ${CATEGORIES.map(cat => {
               const count = cat === 'All' ? allProblems.length : allProblems.filter(p => p.category === cat).length;
@@ -308,7 +478,6 @@ export class UIRenderer {
             }).join('')}
           </div>
 
-          <!-- Secondary filters row: Status & Sort -->
           <div class="secondary-filters-row">
             <div class="filter-dropdown-group">
               <label for="status-filter">Status:</label>
@@ -330,31 +499,29 @@ export class UIRenderer {
               </select>
             </div>
 
-            <div style="font-size: 0.8125rem; color: var(--text-muted);">
+            <div style="font-size: 0.95rem; color: var(--text-muted); font-weight: 600;">
               Showing <strong>${filtered.length}</strong> of ${allProblems.length} problems
             </div>
           </div>
         </div>
 
-        <!-- Problems Grid -->
         ${filtered.length > 0 ? `
           <div class="problems-grid">
             ${filtered.map(p => this.renderProblemCardHtml(p)).join('')}
           </div>
         ` : `
-          <div style="background: white; border: 1px dashed var(--border-medium); border-radius: var(--radius-lg); padding: 4rem 2rem; text-align: center;">
-            <div style="font-size: 3rem; margin-bottom: 1rem;">🔎</div>
-            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">No matching problems found</h3>
-            <p style="color: var(--text-secondary); max-width: 450px; margin: 0 auto 1.5rem;">
-              We couldn't find any problems matching your current filter criteria. Try clearing your filters or be the first to post this problem!
+          <div style="background: white; border: 1.5px dashed var(--border-medium); border-radius: var(--radius-xl); padding: 5rem 2rem; text-align: center;">
+            <div style="font-size: 3.5rem; margin-bottom: 1rem;">🔎</div>
+            <h3 style="font-size: 1.45rem; font-weight: 800; margin-bottom: 0.5rem;">No matching problems found</h3>
+            <p style="color: var(--text-secondary); max-width: 500px; margin: 0 auto 2rem; font-size: 1.05rem;">
+              We couldn't find any problems matching your filter criteria. Try clearing filters or be the first to share this problem.
             </p>
-            <a href="#/post" class="btn btn-primary">Post This Problem</a>
+            <a href="#/post" class="btn btn-primary btn-lg">Post This Problem</a>
           </div>
         `}
       </div>
     `;
 
-    // Bind event listeners for search and filter updates
     const searchInput = this.app.querySelector('#feed-search-input');
     let debounceTimer;
     searchInput.addEventListener('input', (e) => {
@@ -397,63 +564,16 @@ export class UIRenderer {
     window.location.hash = `#/explore${newQueryStr ? '?' + newQueryStr : ''}`;
   }
 
-  renderProblemCardHtml(p) {
-    const isSupported = state.isProblemSupported(p.id);
-    const solCount = p.solutions ? p.solutions.length : 0;
-
-    return `
-      <a href="#/problem/${p.id}" class="problem-card">
-        <div class="problem-card-header">
-          <span class="badge badge-category">${p.category}</span>
-          <span class="badge ${this.getStatusBadgeClass(p.status)}">${p.status}</span>
-        </div>
-
-        <h3 class="problem-title">${p.title}</h3>
-        <p class="problem-excerpt">${p.description}</p>
-
-        <div class="problem-meta-row">
-          <span class="badge ${this.getImpactBadgeClass(p.impactLevel)}">
-            ${p.impactLevel} Impact
-          </span>
-          <span style="font-size: 0.75rem; color: var(--text-muted);">
-            • Occurs: ${p.frequency || 'Regularly'}
-          </span>
-        </div>
-
-        <div class="author-tag">
-          <div class="author-avatar-sm">${p.author?.avatar || 'IN'}</div>
-          <span>Posted by ${p.author?.name || 'Community Member'}</span>
-        </div>
-
-        <div class="problem-card-footer">
-          <div class="problem-stats">
-            <span class="stat-item" title="People who experience this problem too">
-              <span style="color: ${isSupported ? 'var(--brand-link)' : 'inherit'};">🙌</span>
-              <strong>${p.supportedByCount || 0}</strong> support
-            </span>
-            <span class="stat-item" title="Proposed solutions">
-              <span>💡</span>
-              <strong>${solCount}</strong> ${solCount === 1 ? 'solution' : 'solutions'}
-            </span>
-          </div>
-          <span style="font-size: 0.8125rem; font-weight: 600; color: var(--brand-inno);">
-            View Details →
-          </span>
-        </div>
-      </a>
-    `;
-  }
-
   // ------------------------------------------------------------------------
-  // 3. Problem Detail View
+  // 5. Problem Detail View
   // ------------------------------------------------------------------------
   renderDetail(problemId) {
     const problem = state.getProblemById(problemId);
     if (!problem) {
       this.app.innerHTML = `
-        <div class="container" style="text-align: center; padding: 4rem 1rem;">
+        <div class="container" style="text-align: center; padding: 5rem 1rem;">
           <h2>Problem Not Found</h2>
-          <p style="color: var(--text-secondary); margin: 1rem 0;">The problem you are looking for does not exist or was removed.</p>
+          <p style="color: var(--text-secondary); margin: 1rem 0;">The problem you are looking for does not exist.</p>
           <a href="#/explore" class="btn btn-primary">Back to Explore Problems</a>
         </div>
       `;
@@ -466,80 +586,74 @@ export class UIRenderer {
 
     this.app.innerHTML = `
       <div class="container">
-        <!-- Breadcrumb navigation -->
-        <div style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: 0.8125rem; color: var(--text-muted);">
-          <a href="#/explore" style="color: var(--text-secondary); text-decoration: none;">← Back to Problems</a>
+        <div style="margin-bottom: 2rem; display: flex; align-items: center; gap: 0.65rem; font-size: 0.95rem; color: var(--text-muted);">
+          <a href="#/explore" style="color: var(--text-secondary); text-decoration: none; font-weight: 600;">← Back to Problems</a>
           <span>/</span>
           <span>${problem.category}</span>
           <span>/</span>
-          <span style="color: var(--text-primary); font-weight: 500;">Detail</span>
+          <span style="color: var(--text-primary); font-weight: 700;">Detail</span>
         </div>
 
         <div class="detail-layout">
-          <!-- Main Content Column -->
           <div class="detail-main">
             <div class="detail-card">
-              <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; flex-wrap: wrap;">
+              <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.25rem; flex-wrap: wrap;">
                 <span class="badge badge-category">${problem.category}</span>
                 <span class="badge ${this.getStatusBadgeClass(problem.status)}">${problem.status}</span>
                 <span class="badge ${this.getImpactBadgeClass(problem.impactLevel)}">${problem.impactLevel} Impact</span>
-                <span style="font-size: 0.8125rem; color: var(--text-muted); margin-left: auto;">Posted ${problem.createdAt}</span>
+                <span style="font-size: 0.9rem; color: var(--text-muted); margin-left: auto;">Posted ${problem.createdAt}</span>
               </div>
 
               <h1 class="detail-title">${problem.title}</h1>
 
-              <div class="author-tag" style="margin-bottom: 1.5rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border-light);">
-                <div class="author-avatar-sm" style="width: 28px; height: 28px; font-size: 0.75rem;">${problem.author?.avatar || 'IN'}</div>
+              <div class="author-tag" style="margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1.5px solid var(--border-light);">
+                <div class="author-avatar-sm" style="width: 36px; height: 36px; font-size: 0.9rem;">${problem.author?.avatar || 'IN'}</div>
                 <div>
-                  <strong style="color: var(--text-primary); font-size: 0.875rem;">${problem.author?.name}</strong>
-                  <div style="font-size: 0.75rem; color: var(--text-muted);">${problem.author?.role}</div>
+                  <strong style="color: var(--text-primary); font-size: 1.05rem;">${problem.author?.name}</strong>
+                  <div style="font-size: 0.85rem; color: var(--text-muted);">${problem.author?.role}</div>
                 </div>
               </div>
 
-              <!-- Problem Statement -->
-              <div style="margin-bottom: 1.5rem;">
-                <h3 style="font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">Problem Description</h3>
-                <p style="font-size: 1rem; color: var(--text-secondary); line-height: 1.7;">
+              <div style="margin-bottom: 2rem;">
+                <h3 style="font-size: 1.2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.75rem;">Problem Description</h3>
+                <p style="font-size: 1.15rem; color: var(--text-secondary); line-height: 1.75;">
                   ${problem.description}
                 </p>
               </div>
 
-              <!-- Background & Context -->
               ${problem.context ? `
-                <div style="background: var(--bg-muted); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.5rem;">
-                  <h4 style="font-size: 0.875rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.35rem;">Additional Context & Lived Experience:</h4>
-                  <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
+                <div style="background: var(--bg-muted); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 2rem; border: 1px solid var(--border-light);">
+                  <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.5rem;">Additional Context & Lived Experience:</h4>
+                  <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7;">
                     ${problem.context}
                   </p>
                 </div>
               ` : ''}
 
-              <!-- "I Experience This Too" Action Box -->
               <div class="support-action-box">
                 <div class="support-action-text">
                   <strong>Do you experience this problem too?</strong>
                   <span>Signal to problem-solvers and sponsors that this problem has widespread real-world impact.</span>
                 </div>
                 <button id="support-toggle-btn" class="btn ${isSupported ? 'support-btn supported' : 'btn-outline-inno support-btn'}">
-                  <span>${isSupported ? '✓ Supported' : '🙌 I Experience This Too'}</span>
-                  <span class="badge" style="background: rgba(0,0,0,0.1); color: inherit;">${problem.supportedByCount || 0}</span>
+                  <span>${isSupported ? '✓ You Supported This' : '🙌 I Experience This Too'}</span>
+                  <span class="badge" style="background: rgba(0,0,0,0.12); color: inherit; font-size: 0.95rem;">${problem.supportedByCount || 0}</span>
                 </button>
               </div>
             </div>
 
-            <!-- Proposed Solutions Section -->
             <div class="detail-card">
               <div class="solutions-section-header">
                 <div>
-                  <h2 style="font-size: 1.375rem; font-weight: 800; color: var(--text-primary);">
+                  <h2 style="font-size: 1.55rem; font-weight: 900; color: var(--text-primary);">
                     Proposed Solutions (${solutions.length})
                   </h2>
-                  <p style="font-size: 0.8125rem; color: var(--text-muted);">
+                  <p style="font-size: 0.95rem; color: var(--text-muted);">
                     Community suggestions, prototypes, and open technical proposals.
                   </p>
                 </div>
-                <button id="open-propose-solution-btn" class="btn btn-green">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+                <button id="open-propose-solution-btn" class="btn btn-green btn-lg">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
                   Propose a Solution
                 </button>
               </div>
@@ -549,85 +663,76 @@ export class UIRenderer {
                   ${solutions.map(sol => this.renderSolutionCardHtml(problem.id, sol)).join('')}
                 </div>
               ` : `
-                <div style="border: 1px dashed var(--border-medium); border-radius: var(--radius-md); padding: 2.5rem 1.5rem; text-align: center;">
-                  <div style="font-size: 2.25rem; margin-bottom: 0.75rem;">💡</div>
-                  <h4 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.35rem;">No solutions proposed yet</h4>
-                  <p style="font-size: 0.875rem; color: var(--text-secondary); max-width: 460px; margin: 0 auto 1.25rem;">
+                <div style="border: 1.5px dashed var(--border-medium); border-radius: var(--radius-lg); padding: 3.5rem 2rem; text-align: center;">
+                  <div style="font-size: 3rem; margin-bottom: 1rem;">💡</div>
+                  <h4 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 0.5rem;">No solutions proposed yet</h4>
+                  <p style="font-size: 1.05rem; color: var(--text-secondary); max-width: 520px; margin: 0 auto 1.75rem;">
                     Have an idea, research background, or hardware/software concept to solve this? Be the first to share an approach!
                   </p>
-                  <button class="btn btn-primary" onclick="document.getElementById('open-propose-solution-btn').click()">
+                  <button class="btn btn-primary btn-lg" onclick="document.getElementById('open-propose-solution-btn').click()">
                     Propose the First Solution
                   </button>
                 </div>
               `}
-
-              <!-- Trust Disclaimer about Solutions & Votes -->
-              <div style="margin-top: 1.5rem; padding: 0.875rem 1rem; background: var(--bg-muted); border-radius: var(--radius-md); border-left: 3px solid var(--brand-inno); font-size: 0.75rem; color: var(--text-secondary); line-height: 1.5;">
-                <strong style="color: var(--text-primary);">⚠️ Prototype Trust Note:</strong> Community votes indicate community perceived helpfulness and peer interest. They do not constitute formal technical validation, peer-reviewed engineering testing, or regulatory clearance.
-              </div>
             </div>
 
-            <!-- Community Comments Section -->
             <div class="detail-card">
-              <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 1.25rem;">
+              <h3 style="font-size: 1.45rem; font-weight: 900; margin-bottom: 1.5rem;">
                 Community Discussion (${comments.length})
               </h3>
 
-              <div id="comments-list" style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem;">
+              <div id="comments-list" style="display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 2rem;">
                 ${comments.length > 0 ? comments.map(c => `
-                  <div style="background: var(--bg-muted); border-radius: var(--radius-md); padding: 1rem; border: 1px solid var(--border-light);">
-                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.35rem;">
-                      <strong style="font-size: 0.875rem; color: var(--text-primary);">${c.author}</strong>
-                      <span style="font-size: 0.75rem; color: var(--text-muted);">${c.timestamp}</span>
+                  <div style="background: var(--bg-muted); border-radius: var(--radius-md); padding: 1.25rem; border: 1.5px solid var(--border-light);">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+                      <strong style="font-size: 1rem; color: var(--text-primary);">${c.author}</strong>
+                      <span style="font-size: 0.85rem; color: var(--text-muted);">${c.timestamp}</span>
                     </div>
-                    <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5;">${c.text}</p>
+                    <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.6;">${c.text}</p>
                   </div>
                 `).join('') : `
-                  <p style="font-size: 0.875rem; color: var(--text-muted); font-style: italic;">No comments yet. Share your experience or thoughts below.</p>
+                  <p style="font-size: 1rem; color: var(--text-muted); font-style: italic;">No comments yet. Share your experience or questions below.</p>
                 `}
               </div>
 
-              <!-- Add Comment Form -->
-              <form id="add-comment-form" style="border-top: 1px solid var(--border-light); padding-top: 1.25rem;">
+              <form id="add-comment-form" style="border-top: 1.5px solid var(--border-light); padding-top: 1.5rem;">
                 <div class="form-group">
                   <label class="form-label" for="comment-text">Add your perspective or context</label>
                   <textarea id="comment-text" class="form-textarea" placeholder="Share additional nuances, related experiences, or questions..." rows="3" required></textarea>
                 </div>
-                <button type="submit" class="btn btn-secondary btn-sm">Submit Comment</button>
+                <button type="submit" class="btn btn-secondary btn-lg">Submit Comment</button>
               </form>
             </div>
           </div>
 
-          <!-- Sidebar Column: Impact Summary & Guidelines -->
           <div class="detail-sidebar">
-            <div class="detail-card" style="padding: 1.5rem;">
-              <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Problem Impact Overview</h3>
-              <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.875rem;">
+            <div class="detail-card" style="padding: 2rem;">
+              <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 1.25rem; color: var(--text-primary);">Problem Impact Overview</h3>
+              <div style="display: flex; flex-direction: column; gap: 1.25rem; font-size: 1rem;">
                 <div>
-                  <span style="color: var(--text-muted); display: block; font-size: 0.75rem;">Reported Frequency</span>
-                  <strong style="color: var(--text-primary); font-size: 1rem;">${problem.frequency || 'Weekly'}</strong>
+                  <span style="color: var(--text-muted); display: block; font-size: 0.85rem;">Reported Frequency</span>
+                  <strong style="color: var(--text-primary); font-size: 1.2rem;">${problem.frequency || 'Weekly'}</strong>
                 </div>
                 <div>
-                  <span style="color: var(--text-muted); display: block; font-size: 0.75rem;">Severity Level</span>
-                  <span class="badge ${this.getImpactBadgeClass(problem.impactLevel)}">${problem.impactLevel} Severity</span>
+                  <span style="color: var(--text-muted); display: block; font-size: 0.85rem;">Severity Level</span>
+                  <span class="badge ${this.getImpactBadgeClass(problem.impactLevel)}" style="margin-top: 0.25rem;">${problem.impactLevel} Severity</span>
                 </div>
                 <div>
-                  <span style="color: var(--text-muted); display: block; font-size: 0.75rem;">Community Verification</span>
-                  <strong style="color: var(--brand-link); font-size: 1rem;">${problem.supportedByCount || 0} People</strong>
-                  <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">experience this same friction point</span>
+                  <span style="color: var(--text-muted); display: block; font-size: 0.85rem;">Community Support</span>
+                  <strong style="color: var(--brand-link); font-size: 1.2rem;">${problem.supportedByCount || 0} People</strong>
+                  <span style="font-size: 0.85rem; color: var(--text-muted); display: block;">experience this same friction point</span>
                 </div>
               </div>
             </div>
 
-            <!-- Guidelines Callout -->
-            <div class="detail-card" style="padding: 1.5rem; background: var(--bg-muted);">
-              <h4 style="font-size: 0.875rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-primary);">InnoLink Solution Guidelines</h4>
-              <ul style="font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.5; padding-left: 1.25rem; margin-bottom: 1rem;">
+            <div class="detail-card" style="padding: 2rem; background: var(--bg-muted);">
+              <h4 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 0.75rem; color: var(--text-primary);">InnoLink Guidelines</h4>
+              <ul style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; padding-left: 1.25rem; margin-bottom: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem;">
                 <li>Ground ideas in technical feasibility and practical constraints.</li>
                 <li>Cite sources, prior academic work, or link open repositories.</li>
-                <li>Remember that posting does not assign or settle patent or IP rights.</li>
+                <li>Posting does not assign or settle patent or IP rights.</li>
               </ul>
-              <a href="#/how-it-works" style="font-size: 0.75rem; font-weight: 600; color: var(--brand-inno); text-decoration: underline;">
+              <a href="#/how-it-works" style="font-size: 0.95rem; font-weight: 700; color: var(--brand-inno); text-decoration: underline;">
                 Read full Trust & Safety Guidelines →
               </a>
             </div>
@@ -636,12 +741,11 @@ export class UIRenderer {
       </div>
     `;
 
-    // Bind event handlers
     const supportBtn = this.app.querySelector('#support-toggle-btn');
     supportBtn.addEventListener('click', () => {
       state.toggleSupportProblem(problem.id);
-      this.renderDetail(problem.id); // Re-render detail
-      this.showToast(state.isProblemSupported(problem.id) ? "You signaled shared experience for this problem!" : "Removed support signal.", "info");
+      this.renderDetail(problem.id);
+      this.showToast(state.isProblemSupported(problem.id) ? "You signaled shared experience!" : "Removed support signal.", "info");
     });
 
     const proposeBtn = this.app.querySelector('#open-propose-solution-btn');
@@ -649,7 +753,6 @@ export class UIRenderer {
       this.openProposeSolutionModal(problem.id);
     });
 
-    // Solution vote buttons
     this.app.querySelectorAll('.vote-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const solId = btn.getAttribute('data-solution-id');
@@ -660,7 +763,6 @@ export class UIRenderer {
       });
     });
 
-    // Add comment form
     const commentForm = this.app.querySelector('#add-comment-form');
     commentForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -682,17 +784,17 @@ export class UIRenderer {
         <div class="solution-header">
           <div>
             <h4 class="solution-title">${sol.title}</h4>
-            <div class="author-tag" style="margin-top: 0.25rem;">
+            <div class="author-tag" style="margin-top: 0.35rem;">
               <span>By <strong>${sol.author?.name}</strong> (${sol.author?.role})</span>
             </div>
           </div>
           <div>
             ${sol.isExpertReviewed ? `
-              <span class="badge" style="background: #F3E8FF; color: #7C3AED; border: 1px solid #D8B4FE;">
+              <span class="badge" style="background: #F3E8FF; color: #7C3AED; border: 1.5px solid #D8B4FE;">
                 ✓ Expert Reviewed
               </span>
             ` : `
-              <span class="badge" style="background: var(--bg-muted); color: var(--text-muted);">
+              <span class="badge" style="background: var(--bg-muted); color: var(--text-secondary);">
                 Community Submitted
               </span>
             `}
@@ -706,21 +808,20 @@ export class UIRenderer {
         ${sol.evidenceUrl ? `
           <div>
             <a href="${sol.evidenceUrl}" target="_blank" rel="noopener noreferrer" class="solution-evidence-link">
-              🔗 Evidence / Prototype Link (${sol.evidenceUrl.replace(/^https?:\/\//, '').slice(0, 32)}...)
+              🔗 Evidence / Prototype Link (${sol.evidenceUrl.replace(/^https?:\/\//, '').slice(0, 36)}...)
             </a>
           </div>
         ` : ''}
 
         ${sol.expertNotes ? `
-          <div style="background: #FAF5FF; border: 1px solid #E9D5FF; border-radius: var(--radius-sm); padding: 0.75rem; margin-bottom: 1rem; font-size: 0.8125rem; color: #6B21A8;">
+          <div style="background: #FAF5FF; border: 1.5px solid #E9D5FF; border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1.25rem; font-size: 0.95rem; color: #6B21A8; line-height: 1.6;">
             <strong>Expert Feedback Note:</strong> ${sol.expertNotes}
           </div>
         ` : ''}
 
-        <!-- Solution Helpfulness Vote Bar -->
         <div class="solution-vote-bar">
           <div class="vote-actions">
-            <span style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted); margin-right: 0.25rem;">Helpfulness:</span>
+            <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-muted); margin-right: 0.35rem;">Helpfulness:</span>
             <button class="vote-btn ${userVote === 'helpful' ? 'voted' : ''}" data-solution-id="${sol.id}" data-vote-type="helpful">
               👍 Helpful (${votes.helpful || 0})
             </button>
@@ -731,14 +832,13 @@ export class UIRenderer {
               🛠️ I Can Build This (${votes.canBuild || 0})
             </button>
           </div>
-          <span class="trust-disclaimer-pill">Community feedback</span>
         </div>
       </div>
     `;
   }
 
   // ------------------------------------------------------------------------
-  // 4. Post a Problem View
+  // 6. Post a Problem View
   // ------------------------------------------------------------------------
   renderPostProblem() {
     this.app.innerHTML = `
@@ -752,7 +852,6 @@ export class UIRenderer {
         </div>
 
         <div class="post-form-grid">
-          <!-- Form Left Column -->
           <form id="post-problem-form" class="detail-card" novalidate>
             <div class="form-group" id="group-title">
               <label class="form-label" for="problem-title">
@@ -770,11 +869,10 @@ export class UIRenderer {
               <div class="form-error">Please provide a descriptive title (at least 10 characters).</div>
             </div>
 
-            <!-- Simulated AI Category Suggester Box -->
             <div class="ai-category-box">
               <div class="ai-category-info">
-                <strong>✨ Simulated AI Category Assistant:</strong>
-                <span>Type your description below, then click to auto-suggest the best category.</span>
+                <strong>✨ AI Category Assistant:</strong>
+                <span>Type your description below, then click to auto-suggest the best matching category.</span>
               </div>
               <button type="button" id="suggest-category-btn" class="btn btn-outline-green btn-sm">
                 Suggest Category
@@ -794,7 +892,7 @@ export class UIRenderer {
               <div class="form-error">Please choose a category.</div>
             </div>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
               <div class="form-group">
                 <label class="form-label" for="problem-frequency">How often does this occur?</label>
                 <select id="problem-frequency" class="form-select">
@@ -842,15 +940,14 @@ export class UIRenderer {
               ></textarea>
             </div>
 
-            <div style="display: flex; align-items: center; justify-content: flex-end; gap: 1rem; margin-top: 1.5rem; border-top: 1px solid var(--border-light); padding-top: 1.25rem;">
-              <a href="#/explore" class="btn btn-secondary">Cancel</a>
+            <div style="display: flex; align-items: center; justify-content: flex-end; gap: 1.25rem; margin-top: 2rem; border-top: 1.5px solid var(--border-light); padding-top: 1.5rem;">
+              <a href="#/explore" class="btn btn-secondary btn-lg">Cancel</a>
               <button type="submit" class="btn btn-primary btn-lg">Publish Problem to Feed</button>
             </div>
           </form>
 
-          <!-- Live Card Preview Column -->
           <div class="preview-sticky-box">
-            <div style="font-size: 0.8125rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem;">
+            <div style="font-size: 0.95rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem;">
               Live Feed Card Preview
             </div>
             <div class="problem-card" style="cursor: default;">
@@ -866,26 +963,25 @@ export class UIRenderer {
               </p>
               <div class="problem-meta-row">
                 <span id="preview-impact" class="badge badge-impact-medium">Moderate Impact</span>
-                <span id="preview-freq" style="font-size: 0.75rem; color: var(--text-muted);">• Occurs: Weekly</span>
+                <span id="preview-freq" style="font-size: 0.85rem; color: var(--text-muted);">• Occurs: Weekly</span>
               </div>
               <div class="problem-card-footer">
                 <div class="problem-stats">
                   <span class="stat-item">🙌 <strong>1</strong> support</span>
                   <span class="stat-item">💡 <strong>0</strong> solutions</span>
                 </div>
-                <span style="font-size: 0.75rem; color: var(--brand-link); font-weight: 600;">Preview State</span>
+                <span class="card-action-pill">Live Preview</span>
               </div>
             </div>
 
-            <div style="margin-top: 1.25rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: var(--radius-md); font-size: 0.75rem; color: var(--text-secondary);">
-              <strong>Notice:</strong> Your post will be visible to students, researchers, and mentors. Do not share confidential organizational data or private medical information.
+            <div style="margin-top: 1.5rem; padding: 1.25rem; background: var(--bg-surface); border: 1.5px solid var(--border-light); border-radius: var(--radius-lg); font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+              <strong>Privacy Notice:</strong> Your problem post will be visible across InnoLink. Do not share confidential organizational secrets or private personal health information.
             </div>
           </div>
         </div>
       </div>
     `;
 
-    // Live preview bindings
     const titleInput = this.app.querySelector('#problem-title');
     const descInput = this.app.querySelector('#problem-description');
     const catInput = this.app.querySelector('#problem-category');
@@ -915,7 +1011,6 @@ export class UIRenderer {
       pFreq.textContent = `• Occurs: ${freqInput.value}`;
     });
 
-    // Simulated AI Category Suggester button
     const suggestBtn = this.app.querySelector('#suggest-category-btn');
     suggestBtn.addEventListener('click', () => {
       const text = (titleInput.value + " " + descInput.value).toLowerCase();
@@ -935,16 +1030,14 @@ export class UIRenderer {
 
       catInput.value = suggested;
       pCat.textContent = suggested;
-      this.showToast(`✨ AI Assistant suggested category: "${suggested}" (Demo)`, "info");
+      this.showToast(`✨ Suggested category: "${suggested}"`, "info");
     });
 
-    // Form Submission with validation
     const form = this.app.querySelector('#post-problem-form');
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       let valid = true;
 
-      // Validate title
       const grpTitle = this.app.querySelector('#group-title');
       if (titleInput.value.trim().length < 10) {
         grpTitle.classList.add('has-error');
@@ -953,7 +1046,6 @@ export class UIRenderer {
         grpTitle.classList.remove('has-error');
       }
 
-      // Validate category
       const grpCat = this.app.querySelector('#group-category');
       if (!catInput.value) {
         grpCat.classList.add('has-error');
@@ -962,7 +1054,6 @@ export class UIRenderer {
         grpCat.classList.remove('has-error');
       }
 
-      // Validate description
       const grpDesc = this.app.querySelector('#group-description');
       if (descInput.value.trim().length < 25) {
         grpDesc.classList.add('has-error');
@@ -988,11 +1079,11 @@ export class UIRenderer {
   }
 
   // ------------------------------------------------------------------------
-  // 5. How It Works & Trust Guidelines View
+  // 7. How It Works & Trust Guidelines View
   // ------------------------------------------------------------------------
   renderHowItWorks() {
     this.app.innerHTML = `
-      <div class="container" style="max-width: 900px;">
+      <div class="container" style="max-width: 960px;">
         <div class="section-header">
           <span class="section-eyebrow">Platform Guidelines</span>
           <h1 class="section-title">How InnoLink Works & Trust Policy</h1>
@@ -1001,39 +1092,37 @@ export class UIRenderer {
           </p>
         </div>
 
-        <!-- 4 Steps Flow -->
-        <div class="detail-card" style="margin-bottom: 2rem;">
-          <h2 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 1.25rem;">The Innovation Lifecycle</h2>
-          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;">
-            <div style="text-align: center; padding: 1rem; background: var(--bg-muted); border-radius: var(--radius-md);">
-              <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">1️⃣</div>
-              <strong style="display: block; font-size: 0.875rem;">1. Post Problem</strong>
-              <span style="font-size: 0.75rem; color: var(--text-secondary);">People with lived experience share persistent frictions.</span>
+        <div class="detail-card" style="margin-bottom: 2.5rem;">
+          <h2 style="font-size: 1.45rem; font-weight: 800; margin-bottom: 1.5rem;">The Innovation Lifecycle</h2>
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem;">
+            <div style="text-align: center; padding: 1.5rem 1rem; background: var(--bg-muted); border-radius: var(--radius-lg);">
+              <div style="font-size: 2rem; margin-bottom: 0.75rem;">1️⃣</div>
+              <strong style="display: block; font-size: 1.05rem; margin-bottom: 0.35rem;">1. Post Problem</strong>
+              <span style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">People with lived experience share persistent frictions.</span>
             </div>
-            <div style="text-align: center; padding: 1rem; background: var(--bg-muted); border-radius: var(--radius-md);">
-              <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">2️⃣</div>
-              <strong style="display: block; font-size: 0.875rem;">2. Community Signal</strong>
-              <span style="font-size: 0.75rem; color: var(--text-secondary);">Peers indicate shared experience ("I experience this too").</span>
+            <div style="text-align: center; padding: 1.5rem 1rem; background: var(--bg-muted); border-radius: var(--radius-lg);">
+              <div style="font-size: 2rem; margin-bottom: 0.75rem;">2️⃣</div>
+              <strong style="display: block; font-size: 1.05rem; margin-bottom: 0.35rem;">2. Community Signal</strong>
+              <span style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">Peers indicate shared experience ("I experience this too").</span>
             </div>
-            <div style="text-align: center; padding: 1rem; background: var(--bg-muted); border-radius: var(--radius-md);">
-              <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">3️⃣</div>
-              <strong style="display: block; font-size: 0.875rem;">3. Solution Proposals</strong>
-              <span style="font-size: 0.75rem; color: var(--text-secondary);">Students and makers propose prototypes and evidence links.</span>
+            <div style="text-align: center; padding: 1.5rem 1rem; background: var(--bg-muted); border-radius: var(--radius-lg);">
+              <div style="font-size: 2rem; margin-bottom: 0.75rem;">3️⃣</div>
+              <strong style="display: block; font-size: 1.05rem; margin-bottom: 0.35rem;">3. Solution Proposals</strong>
+              <span style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">Students and makers propose prototypes and evidence links.</span>
             </div>
-            <div style="text-align: center; padding: 1rem; background: var(--bg-muted); border-radius: var(--radius-md);">
-              <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">4️⃣</div>
-              <strong style="display: block; font-size: 0.875rem;">4. Expert Review</strong>
-              <span style="font-size: 0.75rem; color: var(--text-secondary);">Domain mentors evaluate safety and feasibility claims.</span>
+            <div style="text-align: center; padding: 1.5rem 1rem; background: var(--bg-muted); border-radius: var(--radius-lg);">
+              <div style="font-size: 2rem; margin-bottom: 0.75rem;">4️⃣</div>
+              <strong style="display: block; font-size: 1.05rem; margin-bottom: 0.35rem;">4. Expert Review</strong>
+              <span style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">Domain mentors evaluate safety and feasibility claims.</span>
             </div>
           </div>
         </div>
 
-        <!-- Trust Comparison Table -->
-        <div class="detail-card" style="margin-bottom: 2rem;">
-          <h2 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.5rem;">
+        <div class="detail-card" style="margin-bottom: 2.5rem;">
+          <h2 style="font-size: 1.45rem; font-weight: 800; margin-bottom: 0.75rem;">
             Community Support vs. Expert Validation
           </h2>
-          <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+          <p style="font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
             To maintain safety and credibility, InnoLink explicitly separates subjective community enthusiasm from rigorous technical validation.
           </p>
 
@@ -1059,12 +1148,12 @@ export class UIRenderer {
                 </tr>
                 <tr>
                   <td><strong>Visual Badge</strong></td>
-                  <td><span class="badge" style="background: var(--bg-muted); color: var(--text-muted);">Community Submitted</span></td>
-                  <td><span class="badge" style="background: #F3E8FF; color: #7C3AED; border: 1px solid #D8B4FE;">✓ Expert Reviewed</span></td>
+                  <td><span class="badge" style="background: var(--bg-muted); color: var(--text-secondary);">Community Submitted</span></td>
+                  <td><span class="badge" style="background: #F3E8FF; color: #7C3AED; border: 1.5px solid #D8B4FE;">✓ Expert Reviewed</span></td>
                 </tr>
                 <tr>
                   <td><strong>Guarantees</strong></td>
-                  <td>None. Votes do NOT guarantee that a solution works or is safe.</td>
+                  <td>None. Votes do not guarantee that a solution works or is safe.</td>
                   <td>Subject to formal testing notes, methodology audit, and documented boundaries.</td>
                 </tr>
               </tbody>
@@ -1072,10 +1161,9 @@ export class UIRenderer {
           </div>
         </div>
 
-        <!-- Intellectual Property & Content Safety -->
         <div class="detail-card">
-          <h2 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 1rem;">Intellectual Property & Safety Rules</h2>
-          <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
+          <h2 style="font-size: 1.45rem; font-weight: 800; margin-bottom: 1.25rem;">Intellectual Property & Safety Rules</h2>
+          <div style="display: flex; flex-direction: column; gap: 1.25rem; font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7;">
             <p>
               <strong>1. IP Rights:</strong> Posting a problem or proposing a solution on InnoLink does not in itself constitute a patent filing or settle intellectual property ownership. Collaborative agreements, patents, and commercial licensing must be executed independently between the involved parties under applicable legal frameworks.
             </p>
@@ -1092,42 +1180,42 @@ export class UIRenderer {
   }
 
   // ------------------------------------------------------------------------
-  // 6. Roadmap & Preview View
+  // 8. Roadmap View
   // ------------------------------------------------------------------------
   renderRoadmap() {
     this.app.innerHTML = `
-      <div class="container" style="max-width: 900px;">
+      <div class="container" style="max-width: 960px;">
         <div class="section-header">
-          <span class="section-eyebrow">Future Vision</span>
+          <span class="section-eyebrow">Platform Vision</span>
           <h1 class="section-title">InnoLink Platform Roadmap</h1>
           <p class="section-subtitle">
-            Preview of upcoming capabilities being designed following our prototype usability testing.
+            Upcoming capabilities being designed for university partnerships, research grants, and organization challenge sprints.
           </p>
         </div>
 
-        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <div style="display: flex; flex-direction: column; gap: 2rem;">
           <div class="detail-card">
-            <span class="badge" style="background: #F5F3FF; color: #7C3AED; margin-bottom: 0.75rem;">Phase 2 Preview</span>
-            <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">
+            <span class="badge" style="background: #F5F3FF; color: #7C3AED; margin-bottom: 1rem;">Phase 2 Initiative</span>
+            <h3 style="font-size: 1.45rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.75rem;">
               Verified Expert Review & Academic Mentorship Network
             </h3>
-            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+            <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.25rem;">
               Faculty members, patent attorneys, and industry specialists can claim problems in their domain to provide technical vetting, laboratory access credentials, and co-authorship mentorship for promising student prototypes.
             </p>
-            <div style="background: var(--bg-muted); border-radius: var(--radius-md); padding: 1rem; font-size: 0.8125rem;">
-              <strong>Upcoming Features:</strong> Academic institutional SSO (ORCID / EduPerson), peer review rubrics, lab equipment reservation pass, and verified validator profile badges.
+            <div style="background: var(--bg-muted); border-radius: var(--radius-lg); padding: 1.25rem; font-size: 0.95rem; line-height: 1.6;">
+              <strong>Upcoming Features:</strong> Academic institutional SSO (ORCID / EduPerson), peer review rubrics, lab equipment reservation passes, and verified validator profile badges.
             </div>
           </div>
 
           <div class="detail-card">
-            <span class="badge badge-bounty" style="margin-bottom: 0.75rem;">Phase 2 Preview</span>
-            <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">
+            <span class="badge badge-bounty" style="margin-bottom: 1rem;">Phase 2 Initiative</span>
+            <h3 style="font-size: 1.45rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.75rem;">
               Organization Innovation Portal & Prize Escrow
             </h3>
-            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
-              Companies, NGOs, and municipal councils will be able to launch custom challenge sprints, fund escrow prize pools, and establish transparent IP co-development agreements with student teams.
+            <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.25rem;">
+              Companies, NGOs, and municipal councils can launch custom challenge sprints, fund escrow prize pools, and establish transparent IP co-development agreements with student teams.
             </p>
-            <div style="background: var(--bg-muted); border-radius: var(--radius-md); padding: 1rem; font-size: 0.8125rem;">
+            <div style="background: var(--bg-muted); border-radius: var(--radius-lg); padding: 1.25rem; font-size: 0.95rem; line-height: 1.6;">
               <strong>Upcoming Features:</strong> Transparent smart escrow funding, legal challenge templates, NDA-safe sandboxes, and milestone-based grant disbursements.
             </div>
           </div>
@@ -1137,97 +1225,8 @@ export class UIRenderer {
   }
 
   // ------------------------------------------------------------------------
-  // Modals & Interactive Overlays
+  // 9. Modals
   // ------------------------------------------------------------------------
-  openChallengeModal(challengeId) {
-    const ch = state.getSponsoredChallengeById(challengeId);
-    if (!ch) return;
-
-    let overlay = document.getElementById('app-modal-overlay');
-    if (!overlay) {
-      overlay = document.createElement('div');
-      overlay.id = 'app-modal-overlay';
-      overlay.className = 'modal-overlay';
-      document.body.appendChild(overlay);
-    }
-
-    overlay.innerHTML = `
-      <div class="modal-card">
-        <div class="modal-header">
-          <div>
-            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
-              <span class="badge badge-bounty">${ch.bountyAmount} Bounty</span>
-              <span class="badge badge-category">${ch.category}</span>
-            </div>
-            <h3 class="modal-title">${ch.title}</h3>
-          </div>
-          <button id="modal-close-x" class="modal-close-btn">&times;</button>
-        </div>
-
-        <div class="modal-body">
-          <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1rem; background: var(--bg-muted); border-radius: var(--radius-md); margin-bottom: 1.25rem;">
-            <div>
-              <span style="font-size: 0.6875rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Challenge Sponsor</span>
-              <div style="font-size: 0.875rem; font-weight: 700; color: var(--text-primary);">${ch.sponsorName} (${ch.sponsorType})</div>
-            </div>
-            <div style="text-align: right;">
-              <span style="font-size: 0.6875rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Submission Deadline</span>
-              <div style="font-size: 0.875rem; font-weight: 700; color: var(--bounty-gold);">${ch.deadline} (${ch.daysLeft} days left)</div>
-            </div>
-          </div>
-
-          <div style="margin-bottom: 1.25rem;">
-            <h4 style="font-size: 0.875rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.35rem;">Problem Background</h4>
-            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">${ch.details}</p>
-          </div>
-
-          <div style="margin-bottom: 1.25rem;">
-            <h4 style="font-size: 0.875rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">Technical & Submission Requirements</h4>
-            <ul style="font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.6; padding-left: 1.25rem;">
-              ${ch.requirements.map(r => `<li><strong>${r}</strong></li>`).join('')}
-            </ul>
-          </div>
-
-          <div style="margin-bottom: 1.25rem;">
-            <h4 style="font-size: 0.875rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">Evaluation Criteria</h4>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
-              ${ch.evaluationCriteria.map(ec => `
-                <div style="background: var(--bg-muted); padding: 0.5rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.75rem; display: flex; justify-content: space-between;">
-                  <span>${ec.label}</span>
-                  <strong>${ec.weight}</strong>
-                </div>
-              `).join('')}
-            </div>
-          </div>
-
-          <div style="background: #FFFBEB; border: 1px solid #FDE68A; border-radius: var(--radius-md); padding: 0.875rem; font-size: 0.75rem; color: #92400E;">
-            <strong>Prototype Demo Notice:</strong> This is a sample sponsored challenge illustrating how organization-funded problems and bounty criteria are presented on InnoLink.
-          </div>
-        </div>
-
-        <div class="modal-footer">
-          <button id="modal-close-footer" class="btn btn-secondary">Close</button>
-          <button id="challenge-express-interest-btn" class="btn btn-green">
-            Submit Solution / Express Interest
-          </button>
-        </div>
-      </div>
-    `;
-
-    overlay.classList.add('open');
-
-    const closeModal = () => {
-      overlay.classList.remove('open');
-    };
-
-    overlay.querySelector('#modal-close-x').addEventListener('click', closeModal);
-    overlay.querySelector('#modal-close-footer').addEventListener('click', closeModal);
-    overlay.querySelector('#challenge-express-interest-btn').addEventListener('click', () => {
-      closeModal();
-      this.showToast(`Interest registered for ${ch.sponsorName} challenge! (Demo)`, 'success');
-    });
-  }
-
   openProposeSolutionModal(problemId) {
     const problem = state.getProblemById(problemId);
     if (!problem) return;
@@ -1244,8 +1243,8 @@ export class UIRenderer {
       <div class="modal-card">
         <div class="modal-header">
           <div>
-            <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Propose Solution for:</span>
-            <h3 class="modal-title" style="font-size: 1.125rem;">${problem.title}</h3>
+            <span style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Propose Solution for:</span>
+            <h3 class="modal-title" style="font-size: 1.3rem;">${problem.title}</h3>
           </div>
           <button id="modal-close-x" class="modal-close-btn">&times;</button>
         </div>
@@ -1275,14 +1274,14 @@ export class UIRenderer {
               <input type="text" id="sol-author-role" class="form-input" placeholder="e.g. Electrical Engineering Student, Assistive Tech Maker" />
             </div>
 
-            <div style="background: var(--bg-muted); border-radius: var(--radius-sm); padding: 0.75rem; font-size: 0.75rem; color: var(--text-secondary);">
+            <div style="background: var(--bg-muted); border-radius: var(--radius-md); padding: 1rem; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">
               <strong>Note on IP:</strong> Submitted concepts will be marked as "Community Proposed". Posting on InnoLink does not establish a patent or settle intellectual property rights.
             </div>
           </div>
 
           <div class="modal-footer">
-            <button type="button" id="modal-cancel-btn" class="btn btn-secondary">Cancel</button>
-            <button type="submit" class="btn btn-green">Submit Solution</button>
+            <button type="button" id="modal-cancel-btn" class="btn btn-secondary btn-lg">Cancel</button>
+            <button type="submit" class="btn btn-green btn-lg">Submit Solution</button>
           </div>
         </form>
       </div>
@@ -1325,10 +1324,9 @@ export class UIRenderer {
   }
 
   // ------------------------------------------------------------------------
-  // 7. Usability Tester Hub Drawer (Section 8)
+  // 10. Usability Tester Hub Drawer (Brought back + Google Sheet Sync Option 1)
   // ------------------------------------------------------------------------
   initTesterHub() {
-    // Floating Trigger Button
     let btn = document.getElementById('tester-hub-toggle');
     if (!btn) {
       btn = document.createElement('button');
@@ -1341,7 +1339,6 @@ export class UIRenderer {
       document.body.appendChild(btn);
     }
 
-    // Drawer Container
     let drawer = document.getElementById('tester-hub-drawer');
     if (!drawer) {
       drawer = document.createElement('div');
@@ -1353,26 +1350,48 @@ export class UIRenderer {
     const renderDrawerContent = () => {
       const completed = state.getCompletedTasks();
       const feedbackList = state.getTesterFeedback();
+      const currentWebhook = state.getWebhookUrl();
       const likedCount = feedbackList.filter(f => f.sentiment === 'liked').length;
       const neutralCount = feedbackList.filter(f => f.sentiment === 'neutral_unhappy').length;
 
       drawer.innerHTML = `
         <div class="tester-drawer-header">
           <div>
-            <div style="font-size: 0.6875rem; text-transform: uppercase; color: var(--brand-link); font-weight: 700;">Section 8 Validation Plan</div>
-            <h3 style="font-size: 1.125rem; font-weight: 700; margin: 0;">Usability Testing Hub</h3>
+            <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--brand-link); font-weight: 800; letter-spacing: 0.05em;">Section 8 Usability Plan</div>
+            <h3 style="font-size: 1.25rem; font-weight: 800; margin: 0.2rem 0 0;">Usability Testing Hub</h3>
           </div>
-          <button id="close-tester-drawer" style="background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer;">&times;</button>
+          <button id="close-tester-drawer" style="background: none; border: none; color: white; font-size: 1.75rem; cursor: pointer; padding: 0.25rem;">&times;</button>
         </div>
 
         <div class="tester-drawer-body">
+          <!-- Option 1: Google Sheet Webhook Sync Configuration -->
+          <div class="webhook-sync-card">
+            <strong style="display: block; font-size: 0.95rem; margin-bottom: 0.35rem;">📊 Google Sheet Real-Time Sync </strong>
+            <p style="margin-bottom: 0.75rem; font-size: 0.85rem; color: #1E3A8A; line-height: 1.5;">
+              Paste your Google Apps Script or SheetDB Webhook URL below. Whenever friends test and submit feedback on GitHub Pages, their responses arrive in your Google Sheet instantly!
+            </p>
+            <div style="display: flex; gap: 0.5rem;">
+              <input type="url" id="webhook-url-input" class="form-input" style="font-size: 0.85rem; padding: 0.45rem 0.65rem;" placeholder="https://script.google.com/macros/s/... or SheetDB URL" value="${currentWebhook}" />
+              <button id="save-webhook-btn" class="btn btn-primary btn-sm" style="white-space: nowrap;">Save</button>
+            </div>
+            ${currentWebhook ? `
+              <div style="color: #059669; font-weight: 700; font-size: 0.8rem; margin-top: 0.4rem;">
+                ✓ Google Sheet Webhook Connected & Active
+              </div>
+            ` : `
+              <div style="color: #64748B; font-size: 0.75rem; margin-top: 0.4rem;">
+                (Optional: If empty, feedback is safely saved to local storage and exportable below)
+              </div>
+            `}
+          </div>
+
           <!-- Tasks Checklist -->
-          <div style="margin-bottom: 1.5rem;">
-            <h4 style="font-size: 0.875rem; font-weight: 700; margin-bottom: 0.25rem;">
+          <div style="margin-bottom: 1.75rem;">
+            <h4 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 0.35rem;">
               Participant Tasks (${completed.length}/5 Completed)
             </h4>
-            <p style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
-              Ask participants to complete each task without coaching:
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
+              Ask participants to complete each task:
             </p>
 
             ${VALIDATION_TASKS.map(task => {
@@ -1380,7 +1399,7 @@ export class UIRenderer {
               return `
                 <div class="task-checklist-item ${isDone ? 'done' : ''}">
                   <input type="checkbox" class="task-checkbox" data-task-id="${task.id}" ${isDone ? 'checked' : ''} />
-                  <div style="font-size: 0.8125rem;">
+                  <div style="font-size: 0.95rem; line-height: 1.4;">
                     <strong>Task ${task.id}:</strong> ${task.title}
                   </div>
                 </div>
@@ -1389,75 +1408,80 @@ export class UIRenderer {
           </div>
 
           <!-- Post-Test Survey Form -->
-          <div style="border-top: 1px solid var(--border-light); padding-top: 1.25rem; margin-bottom: 1.5rem;">
-            <h4 style="font-size: 0.875rem; font-weight: 700; margin-bottom: 0.25rem;">Record Test Results</h4>
-            <p style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
-              Record participant impressions following the tasks:
+          <div style="border-top: 1.5px solid var(--border-light); padding-top: 1.5rem; margin-bottom: 1.75rem;">
+            <h4 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 0.35rem;">Record Test Feedback</h4>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
+              Record your participant's feedback after testing:
             </p>
 
             <form id="tester-feedback-form">
               <div class="form-group">
-                <label class="form-label" style="font-size: 0.75rem;">Overall Impression</label>
-                <div style="display: flex; gap: 0.5rem;">
-                  <label style="font-size: 0.8125rem; display: flex; align-items: center; gap: 0.25rem;">
-                    <input type="radio" name="sentiment" value="liked" required /> Liked / Loved
+                <label class="form-label" style="font-size: 0.9rem;">Overall Impression</label>
+                <div style="display: flex; gap: 1rem;">
+                  <label style="font-size: 0.95rem; font-weight: 600; display: flex; align-items: center; gap: 0.35rem; cursor: pointer;">
+                    <input type="radio" name="sentiment" value="liked" required /> 👍 Liked / Loved
                   </label>
-                  <label style="font-size: 0.8125rem; display: flex; align-items: center; gap: 0.25rem;">
-                    <input type="radio" name="sentiment" value="neutral_unhappy" required /> Neutral / Unhappy
+                  <label style="font-size: 0.95rem; font-weight: 600; display: flex; align-items: center; gap: 0.35rem; cursor: pointer;">
+                    <input type="radio" name="sentiment" value="neutral_unhappy" required /> 😐 Neutral / Unhappy
                   </label>
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="form-label" for="fb-useful" style="font-size: 0.75rem;">What was most useful or appealing?</label>
-                <input type="text" id="fb-useful" class="form-input" style="font-size: 0.8125rem; padding: 0.4rem 0.6rem;" placeholder="e.g. Real problems, clear sponsored bounties..." />
+                <label class="form-label" for="fb-useful" style="font-size: 0.9rem;">What was most useful or appealing?</label>
+                <input type="text" id="fb-useful" class="form-input" style="font-size: 0.95rem;" placeholder="e.g. Real problems, clear bounties in rupees..." />
               </div>
 
               <div class="form-group">
-                <label class="form-label" for="fb-confusing" style="font-size: 0.75rem;">What was confusing or difficult?</label>
-                <input type="text" id="fb-confusing" class="form-input" style="font-size: 0.8125rem; padding: 0.4rem 0.6rem;" placeholder="e.g. Difference between votes and validation..." />
+                <label class="form-label" for="fb-confusing" style="font-size: 0.9rem;">What was confusing or difficult?</label>
+                <input type="text" id="fb-confusing" class="form-input" style="font-size: 0.95rem;" placeholder="e.g. Where to submit proposal..." />
               </div>
 
               <div class="form-group">
-                <label class="form-label" for="fb-feature" style="font-size: 0.75rem;">One feature they would most want added?</label>
-                <input type="text" id="fb-feature" class="form-input" style="font-size: 0.8125rem; padding: 0.4rem 0.6rem;" placeholder="e.g. Chat with problem poster, team matching..." />
+                <label class="form-label" for="fb-feature" style="font-size: 0.9rem;">One feature they would most want added?</label>
+                <input type="text" id="fb-feature" class="form-input" style="font-size: 0.95rem;" placeholder="e.g. Chat with poster, student team finder..." />
               </div>
 
-              <button type="submit" class="btn btn-primary btn-sm" style="width: 100%;">
-                Log Usability Test Record
+              <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+                Submit & Sync Test Record
               </button>
             </form>
           </div>
 
-          <!-- Logged Results Summary -->
-          <div style="border-top: 1px solid var(--border-light); padding-top: 1.25rem;">
-            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
-              <h4 style="font-size: 0.875rem; font-weight: 700;">Recorded Tests (${feedbackList.length})</h4>
-              <button id="reset-test-data-btn" class="btn btn-subtle btn-sm" style="font-size: 0.6875rem; color: var(--impact-critical);">
-                Reset Data
-              </button>
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 0.75rem;">
-              <div style="background: #ECFDF5; border: 1px solid #A7F3D0; border-radius: var(--radius-sm); padding: 0.5rem; text-align: center;">
-                <div style="font-size: 1.25rem; font-weight: 800; color: #047857;">${likedCount}</div>
-                <div style="font-size: 0.6875rem; color: #065F46;">Liked / Loved</div>
-              </div>
-              <div style="background: #FFFBEB; border: 1px solid #FDE68A; border-radius: var(--radius-sm); padding: 0.5rem; text-align: center;">
-                <div style="font-size: 1.25rem; font-weight: 800; color: #B45309;">${neutralCount}</div>
-                <div style="font-size: 0.6875rem; color: #92400E;">Neutral / Unhappy</div>
+          <!-- Logged Results Summary & Export Buttons -->
+          <div style="border-top: 1.5px solid var(--border-light); padding-top: 1.5rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+              <h4 style="font-size: 1.05rem; font-weight: 800;">Recorded Tests (${feedbackList.length})</h4>
+              <div style="display: flex; gap: 0.5rem;">
+                <button id="export-json-btn" class="btn btn-secondary btn-sm" style="font-size: 0.75rem;">
+                  📥 Copy JSON
+                </button>
+                <button id="reset-test-data-btn" class="btn btn-subtle btn-sm" style="font-size: 0.75rem; color: var(--impact-critical);">
+                  Reset
+                </button>
               </div>
             </div>
 
-            <div style="max-height: 180px; overflow-y: auto; font-size: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem;">
+              <div style="background: #ECFDF5; border: 1.5px solid #A7F3D0; border-radius: var(--radius-md); padding: 0.75rem; text-align: center;">
+                <div style="font-size: 1.5rem; font-weight: 900; color: #047857;">${likedCount}</div>
+                <div style="font-size: 0.8rem; font-weight: 700; color: #065F46;">Liked / Loved</div>
+              </div>
+              <div style="background: #FFFBEB; border: 1.5px solid #FDE68A; border-radius: var(--radius-md); padding: 0.75rem; text-align: center;">
+                <div style="font-size: 1.5rem; font-weight: 900; color: #B45309;">${neutralCount}</div>
+                <div style="font-size: 0.8rem; font-weight: 700; color: #92400E;">Neutral / Unhappy</div>
+              </div>
+            </div>
+
+            <div style="max-height: 220px; overflow-y: auto; font-size: 0.85rem; display: flex; flex-direction: column; gap: 0.65rem;">
               ${feedbackList.map((fb, idx) => `
-                <div style="background: var(--bg-muted); border-radius: var(--radius-sm); padding: 0.5rem;">
-                  <div style="display: flex; justify-content: space-between; font-weight: 600;">
+                <div style="background: var(--bg-muted); border-radius: var(--radius-md); padding: 0.75rem; border: 1px solid var(--border-light);">
+                  <div style="display: flex; justify-content: space-between; font-weight: 700;">
                     <span>Participant #${idx + 1} (${fb.sentiment === 'liked' ? '👍 Liked' : '😐 Neutral'})</span>
-                    <span style="color: var(--text-muted); font-size: 0.6875rem;">${fb.completedTaskCount}/5 tasks</span>
+                    <span style="color: var(--text-muted); font-size: 0.75rem;">${fb.completedTaskCount}/5 tasks</span>
                   </div>
-                  ${fb.useful ? `<div style="color: var(--text-secondary); margin-top: 0.2rem;">+ ${fb.useful}</div>` : ''}
-                  ${fb.confusing ? `<div style="color: var(--impact-critical); margin-top: 0.1rem;">! ${fb.confusing}</div>` : ''}
+                  ${fb.useful ? `<div style="color: var(--text-secondary); margin-top: 0.25rem;">+ <em>${fb.useful}</em></div>` : ''}
+                  ${fb.confusing ? `<div style="color: var(--impact-critical); margin-top: 0.15rem;">! <em>${fb.confusing}</em></div>` : ''}
                 </div>
               `).join('')}
             </div>
@@ -1465,9 +1489,17 @@ export class UIRenderer {
         </div>
       `;
 
-      // Drawer close button
+      // Drawer close
       drawer.querySelector('#close-tester-drawer').addEventListener('click', () => {
         drawer.classList.remove('open');
+      });
+
+      // Save Webhook URL
+      drawer.querySelector('#save-webhook-btn').addEventListener('click', () => {
+        const url = drawer.querySelector('#webhook-url-input').value;
+        state.setWebhookUrl(url);
+        this.showToast("Google Sheet Webhook URL saved!", "success");
+        renderDrawerContent();
       });
 
       // Task checkboxes
@@ -1481,29 +1513,39 @@ export class UIRenderer {
 
       // Feedback form
       const fbForm = drawer.querySelector('#tester-feedback-form');
-      fbForm.addEventListener('submit', (e) => {
+      fbForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const sentiment = fbForm.querySelector('input[name="sentiment"]:checked')?.value;
         const useful = fbForm.querySelector('#fb-useful').value;
         const confusing = fbForm.querySelector('#fb-confusing').value;
         const feature = fbForm.querySelector('#fb-feature').value;
 
-        state.saveTesterFeedback({
+        await state.saveTesterFeedback({
           sentiment,
           useful,
           confusing,
           feature
         });
 
-        this.showToast("Test result recorded!", "success");
+        this.showToast("Test feedback recorded & synced!", "success");
         renderDrawerContent();
       });
 
-      // Reset data
+      // Copy JSON
+      const exportBtn = drawer.querySelector('#export-json-btn');
+      if (exportBtn) {
+        exportBtn.addEventListener('click', () => {
+          const dataStr = JSON.stringify(feedbackList, null, 2);
+          navigator.clipboard.writeText(dataStr);
+          this.showToast("All feedback copied to clipboard as JSON!", "success");
+        });
+      }
+
+      // Reset
       drawer.querySelector('#reset-test-data-btn').addEventListener('click', () => {
-        if (confirm("Reset prototype sample data and recorded test feedback to initial state?")) {
+        if (confirm("Reset feedback data to initial state?")) {
           state.resetAllData();
-          this.showToast("Data reset to defaults.", "info");
+          this.showToast("Data reset.", "info");
           renderDrawerContent();
           window.location.reload();
         }
@@ -1516,6 +1558,14 @@ export class UIRenderer {
         renderDrawerContent();
       }
     });
+
+    // Also attach quicklink from top bar
+    const topQuicklink = document.getElementById('tester-hub-quicklink');
+    if (topQuicklink) {
+      topQuicklink.addEventListener('click', () => {
+        drawer.classList.add('open');
+        renderDrawerContent();
+      });
+    }
   }
 }
-

@@ -57,7 +57,7 @@ test('Seed Data Integrity Tests', async (t) => {
       assert.ok(ch.id, 'Challenge must have id');
       assert.ok(ch.title, 'Challenge must have title');
       assert.ok(ch.sponsorName, 'Challenge must have sponsorName');
-      assert.ok(ch.bountyAmount.includes('$'), 'Challenge must show bounty amount');
+      assert.ok(ch.bountyAmount.includes('₹'), 'Challenge must show Indian Rupee bounty amount');
       assert.ok(ch.deadline, 'Challenge must have deadline');
       assert.ok(ch.problemSummary, 'Challenge must have problemSummary');
       assert.ok(ch.details, 'Challenge must have details');
@@ -150,8 +150,15 @@ test('State Management Logic Tests', async (t) => {
     assert.strictEqual(state.getSolutionVote(solId), null);
   });
 
-  await t.test('Can log usability tester feedback (Section 8 Validation)', () => {
-    const fb = state.saveTesterFeedback({
+  await t.test('Can retrieve sponsored challenge by id for dedicated challenge page', () => {
+    const ch = state.getSponsoredChallengeById('sc-1');
+    assert.ok(ch);
+    assert.strictEqual(ch.title, "Non-Invasive Continuous Hydration Monitoring for Outdoor Agricultural Workers");
+    assert.ok(ch.bountyAmount.includes('₹10,00,000'));
+  });
+
+  await t.test('Can log usability tester feedback (Section 8 Validation)', async () => {
+    const fb = await state.saveTesterFeedback({
       sentiment: 'liked',
       useful: 'Found the real-world lab problems very inspiring for senior design capstone.',
       confusing: 'Took a second to notice the difference between community votes and expert validation.',

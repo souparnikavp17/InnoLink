@@ -83,7 +83,7 @@ export class Router {
   }
 
   updateActiveNavLinks(activePattern) {
-    document.querySelectorAll('.nav-link').forEach(link => {
+    document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
       const linkHash = link.getAttribute('href') ? link.getAttribute('href').slice(1) : '';
       if (linkHash === activePattern || (activePattern === '/' && (linkHash === '/' || linkHash === ''))) {
         link.classList.add('active');
@@ -93,4 +93,3 @@ export class Router {
     });
   }
 }
-

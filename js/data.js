@@ -1,6 +1,5 @@
 /* ==========================================================================
-   InnoLink Seed Data & Constants
-   All data clearly designated as fictional sample data for prototype testing.
+   InnoLink Core Data & Constants
    ========================================================================== */
 
 export const CATEGORIES = [
@@ -28,11 +27,11 @@ export const PERSONAS = [
 ];
 
 export const VALIDATION_TASKS = [
-  { id: 1, title: "Explain what InnoLink does after viewing the landing page." },
-  { id: 2, title: "Find a problem relevant to you using the feed, search, or filters." },
-  { id: 3, title: "Post a sample problem using the creation form." },
-  { id: 4, title: "Find where you would submit a solution to an existing problem." },
-  { id: 5, title: "Explain how you tell if a solution is community-voted vs expert-validated." }
+  { id: 1, title: "Explore InnoLink mission and understand how problems link to solvers." },
+  { id: 2, title: "Find a problem relevant to you using feed, search, or category filters." },
+  { id: 3, title: "Post a real-world problem using the submission form." },
+  { id: 4, title: "Discover sponsored challenges and submit or inspect proposals." },
+  { id: 5, title: "Understand community support versus expert validation." }
 ];
 
 export const SPONSORED_CHALLENGES = [
@@ -42,27 +41,27 @@ export const SPONSORED_CHALLENGES = [
     sponsorName: "AgriHealth Global Foundation",
     sponsorType: "Health & Labor NGO",
     sponsorAvatar: "AG",
-    bountyAmount: "$12,000 USD",
-    bountyNote: "1st: $8,000 • 2nd: $3,000 • 3rd: $1,000",
+    bountyAmount: "₹10,00,000",
+    bountyNote: "1st: ₹6,00,000 • 2nd: ₹2,50,000 • 3rd: ₹1,50,000",
     deadline: "December 15, 2026",
     daysLeft: 56,
     category: "Healthcare & Accessibility",
     problemSummary: "Farmworkers and outdoor construction laborers suffer severe heat stress and chronic kidney damage due to lack of accessible, real-time warning indicators before dehydration becomes dangerous.",
-    details: "In hot agricultural valleys, seasonal workers regularly experience dangerous heat exhaustion. Current clinical hydration tests require invasive blood draws or laboratory urine analysis, which are impossible during harvesting shifts. We challenge innovators to create a non-invasive, wearable or field-ready indicator that alerts workers to rehydrate before physiological danger thresholds are reached.",
+    details: "In hot agricultural valleys and rural fields, seasonal workers regularly experience dangerous heat exhaustion. Current clinical hydration tests require invasive blood draws or laboratory urine analysis, which are impossible during harvesting shifts. We challenge innovators to create a non-invasive, wearable or field-ready indicator that alerts workers to rehydrate before physiological danger thresholds are reached.",
     requirements: [
       "Working low-cost hardware prototype or wearable sensor concept + open firmware",
-      "Bill of materials (BOM) target strictly under $15 per worker unit at scale",
+      "Bill of materials (BOM) target strictly under ₹1,200 per worker unit at scale",
       "Minimum 14 hours battery endurance under direct sunlight and high ambient temperature (up to 45°C / 113°F)",
       "Sweat, dust, and vibration resistant (IP67 or equivalent mechanical enclosure)",
-      "Immediate intuitive visual/haptic alert without requiring smartphone pairing"
+      "Immediate intuitive visual/haptic alert without requiring continuous smartphone pairing"
     ],
     evaluationCriteria: [
       { label: "Biometric Correlation & Accuracy", weight: "30%" },
-      { label: "Affordability & Manufacturability (<$15 BOM)", weight: "25%" },
+      { label: "Affordability & Manufacturability (<₹1,200 BOM)", weight: "25%" },
       { label: "Harsh Environment Durability (dust/sweat)", weight: "25%" },
       { label: "Ergonomics & Worker Usability", weight: "20%" }
     ],
-    eligibility: "Open to student engineering teams, independent researchers, medical device startups, and multidisciplinary problem-solvers worldwide."
+    eligibility: "Open to student engineering teams, independent researchers, medical device startups, and multidisciplinary problem-solvers."
   },
   {
     id: "sc-2",
@@ -70,17 +69,17 @@ export const SPONSORED_CHALLENGES = [
     sponsorName: "Metro Urban Infrastructure Lab",
     sponsorType: "Civic Public-Private Research Lab",
     sponsorAvatar: "MU",
-    bountyAmount: "$20,000 USD",
+    bountyAmount: "₹15,00,000",
     bountyNote: "Direct research & prototyping grant",
     deadline: "January 30, 2027",
     daysLeft: 102,
     category: "Urban & Civic Tech",
     problemSummary: "Subterranean water pipe pinhole leaks waste over 30% of treated municipal water across university campuses and older municipal districts before surface damage appears.",
-    details: "Aging buried distribution mains suffer slow pressure micro-fractures that remain hidden underground for months, eroding roadbeds and wasting millions of gallons of clean drinking water. Traditional acoustic correlation gear costs upwards of $10,000 per field unit, restricting regular inspection. We seek an ultra-affordable edge sensor array that attaches non-invasively to surface hydrant valves or accessible pipe junctions.",
+    details: "Aging buried distribution mains suffer slow pressure micro-fractures that remain hidden underground for months, eroding roadbeds and wasting millions of litres of clean drinking water. Traditional acoustic correlation gear costs upwards of ₹8,00,000 per field unit, restricting regular inspection. We seek an ultra-affordable edge sensor array that attaches non-invasively to surface hydrant valves or accessible pipe junctions.",
     requirements: [
       "Acoustic frequency analysis between 20 Hz – 2.5 kHz capable of pinpointing high-pressure turbulence",
       "On-device edge filtering algorithm to reject vehicle street noise and construction false positives",
-      "Component cost under $65 per monitoring node",
+      "Component cost under ₹5,000 per monitoring node",
       "Mesh or LoRaWAN wireless telemetry support for remote data transmission",
       "Open API / data schema for municipal GIS mapping integration"
     ],
@@ -98,7 +97,7 @@ export const SPONSORED_CHALLENGES = [
     sponsorName: "TransitAccess Initiative",
     sponsorType: "Civic Non-Profit & Accessibility Council",
     sponsorAvatar: "TA",
-    bountyAmount: "$8,500 USD",
+    bountyAmount: "₹6,50,000",
     bountyNote: "Pilot deployment fellowship + prize",
     deadline: "November 28, 2026",
     daysLeft: 39,
@@ -192,7 +191,7 @@ export const SAMPLE_PROBLEMS = [
       {
         id: "c-201",
         author: "Dr. K. Thorne (ICU Director)",
-        text: "Alarm fatigue is a recognized Joint Commission National Patient Safety Goal. Solutions need to integrate without violating medical device regulatory alarm requirements.",
+        text: "Alarm fatigue is a recognized patient safety concern. Solutions need to integrate without violating medical device regulatory alarm requirements.",
         timestamp: "4 days ago"
       }
     ],
@@ -218,7 +217,7 @@ export const SAMPLE_PROBLEMS = [
       {
         id: "c-301",
         author: "Dr. Lisa Vance (Lab Manager)",
-        text: "The main hesitation from lab PIs is liability: who pays if a student from another department breaks a $40,000 laser objective? Any system must include micro-credential training checks.",
+        text: "The main hesitation from lab PIs is liability: who pays if a student breaks a precision laser objective? Any system must include micro-credential training checks.",
         timestamp: "1 week ago"
       }
     ],
@@ -277,7 +276,7 @@ export const SAMPLE_PROBLEMS = [
         },
         approach: "Reusable color-coded silicone snap-sleeves that clamp securely onto standard pharmacy pill bottles. Each sleeve has distinct tactile geometric shapes (triangle = morning heart, circle = evening) and a passive NFC chip that reads dosage instructions out loud through any standard tap-enabled phone.",
         evidenceUrl: "https://inclusive-hardware.org/nfc-prescription-sleeves-case-study",
-        status: "Prototype Tested with 12 Senior Volunteers",
+        status: "Tested with 12 Senior Volunteers",
         isExpertReviewed: false,
         communityVotes: {
           helpful: 68,
@@ -352,4 +351,3 @@ export const SAMPLE_PROBLEMS = [
     ]
   }
 ];
-

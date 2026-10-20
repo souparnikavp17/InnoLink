@@ -1,24 +1,24 @@
 /* ==========================================================================
-   InnoLink Design Tokens & Variables
+   InnoLink Design Tokens & Modern UI Variables
    Brand Identity:
-   - Inno Blue: #2D2E8E (Deep Indigo / Royal Blue)
-   - Link Green: #0FA968 (Vibrant Innovation Emerald)
+   - Inno Blue: #2D2E8E
+   - Link Green: #0FA968
    ========================================================================== */
 
 :root {
   /* Brand Palette */
   --brand-inno: #2D2E8E;
-  --brand-inno-dark: #1E2063;
-  --brand-inno-light: #4447B5;
+  --brand-inno-dark: #1F2063;
+  --brand-inno-light: #4E51C9;
   --brand-inno-subtle: #EEF0FD;
 
   --brand-link: #0FA968;
-  --brand-link-dark: #0A824E;
-  --brand-link-light: #22C57B;
+  --brand-link-dark: #0A7E4D;
+  --brand-link-light: #24C87F;
   --brand-link-subtle: #E8F9F1;
 
-  --brand-gradient: linear-gradient(135deg, var(--brand-inno) 0%, #1c529e 60%, var(--brand-link) 100%);
-  --brand-gradient-subtle: linear-gradient(135deg, rgba(45, 46, 142, 0.05) 0%, rgba(15, 169, 104, 0.07) 100%);
+  --brand-gradient: linear-gradient(135deg, #2D2E8E 0%, #1A4E9E 55%, #0FA968 100%);
+  --brand-gradient-subtle: linear-gradient(135deg, rgba(45, 46, 142, 0.06) 0%, rgba(15, 169, 104, 0.08) 100%);
 
   /* Neutrals & Surfaces */
   --bg-app: #F8FAFC;
@@ -27,14 +27,14 @@
   --bg-muted: #F1F5F9;
   --bg-subtle: #E2E8F0;
 
-  /* Typography Colors */
-  --text-primary: #0F172A;
-  --text-secondary: #475569;
+  /* Enhanced High-Legibility Typography Colors */
+  --text-primary: #090D16;
+  --text-secondary: #334155;
   --text-muted: #64748B;
   --text-subtle: #94A3B8;
   --text-inverse: #FFFFFF;
 
-  /* Border & Dividers */
+  /* Borders */
   --border-light: #E2E8F0;
   --border-medium: #CBD5E1;
   --border-focus: var(--brand-inno);
@@ -66,36 +66,34 @@
   --impact-low: #059669;
   --impact-low-bg: #ECFDF5;
 
-  /* Bounty & Sponsorship Highlights */
-  --bounty-gold: #B45309;
+  /* Indian Rupee Bounty Highlights */
+  --bounty-gold: #92400E;
   --bounty-gold-bg: #FEF3C7;
   --bounty-gold-border: #F59E0B;
   --bounty-gradient: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
 
-  /* Elevation Shadows */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
-  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  /* Shadows */
+  --shadow-sm: 0 2px 4px 0 rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 8px 16px -2px rgba(15, 23, 42, 0.08), 0 4px 8px -2px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 16px 28px -4px rgba(15, 23, 42, 0.1), 0 8px 12px -4px rgba(15, 23, 42, 0.06);
+  --shadow-xl: 0 24px 38px -6px rgba(15, 23, 42, 0.12), 0 12px 16px -6px rgba(15, 23, 42, 0.06);
 
   /* Radius */
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
   --radius-pill: 9999px;
 
-  /* Typography System */
-  --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  /* Modern Font Family */
+  --font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-  /* Container Sizing */
-  --max-width: 1200px;
-  --nav-height: 72px;
+  /* Sizing - Increased nav height for bigger logo */
+  --max-width: 1280px;
+  --nav-height: 96px;
 
-  /* Transition Speeds */
+  /* Transitions */
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-

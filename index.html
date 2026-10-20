@@ -14,42 +14,60 @@
 </head>
 <body>
 
-  <!-- Top Global Announcement / Usability Demo Banner -->
-  <aside class="demo-banner" aria-label="Prototype Notice">
-    <div class="demo-banner-content">
-      <span class="demo-pill">Prototype Demo</span>
-      <span>Fictional sample data for usability testing — Not a live validation platform.</span>
-    </div>
-    <div class="persona-switch-wrapper">
-      <label for="persona-select" style="font-size: 0.75rem; color: #94A3B8;">Tester View:</label>
-      <select id="persona-select" class="persona-select" aria-label="Select User Role Perspective">
+  <!-- Top Tester View Bar (Brought back with perspective switcher & Tester Hub link) -->
+  <aside class="top-tester-bar" aria-label="Tester Perspective Switcher">
+    <div class="tester-bar-label">
+      <span>🎭 Active Tester Perspective:</span>
+      <select id="persona-select" class="tester-role-select" aria-label="Select User Role Perspective">
         <!-- Injected dynamically by js/app.js -->
       </select>
     </div>
+    <div>
+      <button id="tester-hub-quicklink" class="tester-hub-quicklink" type="button">
+        🧪 Usability Tester Hub & Google Sheet Sync →
+      </button>
+    </div>
   </aside>
 
-  <!-- Navigation Bar -->
+  <!-- Navigation Bar (Large Logo & Clean Elevated Header) -->
   <header class="navbar">
     <div class="nav-container">
       <a href="#/" class="nav-brand" aria-label="InnoLink Home">
         <img src="assets/logo.png" alt="InnoLink Logo" class="brand-logo-img">
-        <span class="brand-badge">Prototype</span>
       </a>
 
+      <!-- Desktop Navigation Links -->
       <nav aria-label="Main Navigation">
         <ul class="nav-links">
           <li><a href="#/explore" class="nav-link">Explore Problems</a></li>
           <li><a href="#/how-it-works" class="nav-link">How It Works & Trust</a></li>
-          <li><a href="#/roadmap" class="nav-link">Roadmap & Sponsors</a></li>
+          <li><a href="#/roadmap" class="nav-link">Roadmap & Challenges</a></li>
         </ul>
       </nav>
 
+      <!-- Desktop Actions & Mobile Menu Button -->
       <div class="nav-actions">
-        <a href="#/post" class="btn btn-primary btn-sm">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+        <a href="#/post" class="btn btn-primary btn-md">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
           Post a Problem
         </a>
+
+        <!-- Mobile Hamburger Toggle Button -->
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
       </div>
+    </div>
+
+    <!-- Mobile Slide-Down Drawer -->
+    <div id="mobile-nav-drawer" class="mobile-nav-drawer">
+      <a href="#/" class="mobile-nav-link">Home</a>
+      <a href="#/explore" class="mobile-nav-link">Explore Problems</a>
+      <a href="#/how-it-works" class="mobile-nav-link">How It Works & Trust</a>
+      <a href="#/roadmap" class="mobile-nav-link">Roadmap & Challenges</a>
+      <a href="#/post" class="btn btn-primary btn-lg" style="margin-top: 0.5rem; width: 100%;">
+        Post a Problem
+      </a>
     </div>
   </header>
 
@@ -61,7 +79,7 @@
     <div class="footer-container">
       <div class="footer-top">
         <div class="footer-brand">
-          <img src="assets/logo.png" alt="InnoLink Logo" style="height: 32px; width: auto; margin-bottom: 0.5rem;">
+          <img src="assets/logo.png" alt="InnoLink Logo" style="height: 54px; width: auto; margin-bottom: 0.75rem;">
           <p>
             Connecting lived experience with technical capability. People know the problems. Problem-solvers bring the expertise. InnoLink connects them.
           </p>
@@ -78,7 +96,7 @@
         </div>
 
         <div class="footer-col">
-          <h4>Roles</h4>
+          <h4>Participants</h4>
           <ul class="footer-links">
             <li><a href="#/post" class="footer-link">Problem Posters</a></li>
             <li><a href="#/explore" class="footer-link">Students & Solvers</a></li>
@@ -89,7 +107,7 @@
 
         <div class="footer-col">
           <div class="footer-trust-box">
-            <strong>Trust & IP Notice</strong>
+            <strong>Trust & Safety Notice</strong>
             InnoLink surfaces real-world problems. Community votes indicate perceived interest, not technical validation. Posting does not settle or assign patent or IP rights.
           </div>
         </div>
@@ -97,10 +115,10 @@
 
       <div class="footer-bottom">
         <div>
-          © 2026 InnoLink Prototype. Developed for concept validation and usability testing.
+          © 2026 InnoLink. Democratizing innovation and collaborative problem-solving.
         </div>
         <div>
-          Click <strong>"🧪 Usability Tester Hub"</strong> to follow the test script or log validation feedback.
+          Where lived problems find technical solutions.
         </div>
       </div>
     </div>
@@ -110,4 +128,3 @@
   <script type="module" src="js/app.js"></script>
 </body>
 </html>
-

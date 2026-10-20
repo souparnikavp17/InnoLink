@@ -1,6 +1,7 @@
 /* ==========================================================================
    InnoLink State Management
    Provides reactive state backed by localStorage with fallback to seed data.
+   Supports Option 1 (Google Sheet Webhook synchronization).
    ========================================================================== */
 
 import { SAMPLE_PROBLEMS, SPONSORED_CHALLENGES, PERSONAS, VALIDATION_TASKS, STATUS_LABELS } from './data.js';
@@ -11,7 +12,8 @@ const STORAGE_KEYS = {
   VOTED_SOLUTIONS: 'innolink_voted_solutions_v1',
   ACTIVE_PERSONA: 'innolink_active_persona_v1',
   COMPLETED_TASKS: 'innolink_completed_tasks_v1',
-  TESTER_FEEDBACK: 'innolink_tester_feedback_v1'
+  TESTER_FEEDBACK: 'innolink_tester_feedback_v1',
+  WEBHOOK_URL: 'innolink_webhook_url_v1'
 };
 
 class StateManager {
@@ -67,6 +69,9 @@ class StateManager {
       this.testerFeedback = [];
     }
 
+    // Google Sheet Webhook URL (Option 1)
+    this.webhookUrl = localStorage.getItem(STORAGE_KEYS.WEBHOOK_URL) || '';
+
     this.challenges = SPONSORED_CHALLENGES;
   }
 
@@ -114,7 +119,7 @@ class StateManager {
         avatar: "ME"
       },
       createdAt: new Date().toISOString().split('T')[0],
-      supportedByCount: 1, // Author experiences it too!
+      supportedByCount: 1,
       comments: [],
       solutions: []
     };
@@ -122,7 +127,6 @@ class StateManager {
     this.problems.unshift(newProblem);
     this.saveProblems();
     
-    // Automatically mark the creator as supporting it
     this.supportedMap[newId] = true;
     localStorage.setItem(STORAGE_KEYS.SUPPORTED_PROBLEMS, JSON.stringify(this.supportedMap));
 
@@ -180,7 +184,6 @@ class StateManager {
     if (!prob.solutions) prob.solutions = [];
     prob.solutions.push(newSolution);
 
-    // If problem was Open, update status to Solution Proposed
     if (prob.status === STATUS_LABELS.OPEN) {
       prob.status = STATUS_LABELS.SOLUTION_PROPOSED;
     }
@@ -207,15 +210,12 @@ class StateManager {
 
     const previousVote = this.votedSolutionsMap[solutionId];
     if (previousVote === voteType) {
-      // Toggle off
       sol.communityVotes[voteType] = Math.max(0, sol.communityVotes[voteType] - 1);
       delete this.votedSolutionsMap[solutionId];
     } else {
-      // Deduct previous if any
       if (previousVote && sol.communityVotes[previousVote]) {
         sol.communityVotes[previousVote] = Math.max(0, sol.communityVotes[previousVote] - 1);
       }
-      // Add new
       sol.communityVotes[voteType] = (sol.communityVotes[voteType] || 0) + 1;
       this.votedSolutionsMap[solutionId] = voteType;
     }
@@ -282,7 +282,17 @@ class StateManager {
     return this.testerFeedback;
   }
 
-  saveTesterFeedback(feedback) {
+  getWebhookUrl() {
+    return this.webhookUrl;
+  }
+
+  setWebhookUrl(url) {
+    this.webhookUrl = (url || '').trim();
+    localStorage.setItem(STORAGE_KEYS.WEBHOOK_URL, this.webhookUrl);
+    this.notify();
+  }
+
+  async saveTesterFeedback(feedback) {
     const entry = {
       id: `fb-${Date.now()}`,
       timestamp: new Date().toISOString(),
@@ -290,9 +300,29 @@ class StateManager {
       completedTaskCount: this.completedTasks.length,
       ...feedback
     };
+
+    // Save locally
     this.testerFeedback.push(entry);
     localStorage.setItem(STORAGE_KEYS.TESTER_FEEDBACK, JSON.stringify(this.testerFeedback));
     this.notify();
+
+    // Option 1: Send to Google Sheet Webhook if configured
+    if (this.webhookUrl) {
+      try {
+        await fetch(this.webhookUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(entry)
+        });
+        console.log("Feedback synchronized to Google Sheet Webhook.");
+      } catch (err) {
+        console.warn("Could not post to webhook, saved locally instead:", err);
+      }
+    }
+
     return entry;
   }
 
@@ -307,4 +337,3 @@ class StateManager {
 }
 
 export const state = new StateManager();
-
