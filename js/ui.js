@@ -188,9 +188,9 @@ export class UIRenderer {
                     <div>
                       <div class="sponsor-name">${ch.sponsorName}</div>
                       <div class="sponsor-type">${ch.sponsorType}</div>
+                      <span class="badge badge-category" style="margin-top:0.4rem; display:inline-block;">${ch.category}</span>
                     </div>
                   </div>
-                  <span class="badge badge-category">${ch.category}</span>
                 </div>
 
                 <div class="challenge-bounty-box">
@@ -404,10 +404,8 @@ export class UIRenderer {
               <strong>${solCount}</strong> ${solCount === 1 ? 'solution' : 'solutions'}
             </span>
           </div>
-          <span class="card-action-pill">
-            View Details →
-          </span>
         </div>
+        <span class="card-view-btn">View Details →</span>
       </a>
     `;
   }

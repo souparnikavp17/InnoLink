@@ -218,7 +218,7 @@
   background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
   border-top: 1.5px solid var(--border-light);
   border-bottom: 1.5px solid var(--border-light);
-  padding: 4.5rem 0;
+  padding: 1rem 0;
 }
 
 .sponsored-header-row {
@@ -232,15 +232,17 @@
 
 .challenge-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
   gap: 2rem;
+  justify-content: center;
+
 }
 
 .challenge-card-box {
   background: var(--bg-surface);
   border: 1.5px solid var(--border-light);
   border-radius: var(--radius-xl);
-  padding: 2rem;
+  padding: 1.5rem 2rem;
   box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
@@ -258,8 +260,7 @@
 
 .challenge-sponsor-bar {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: flex-start;
   margin-bottom: 1.25rem;
   gap: 0.75rem;
 }
@@ -485,6 +486,7 @@
   border: 1.5px solid var(--border-light);
   border-radius: var(--radius-xl);
   padding: 2rem;
+  padding-bottom: 0; /* bottom taken over by .card-view-btn */
   box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
@@ -494,6 +496,7 @@
   text-decoration: none;
   color: inherit;
   position: relative;
+  overflow: hidden;
 }
 .problem-card:hover {
   transform: translateY(-4px);
@@ -589,21 +592,24 @@
   gap: 0.45rem;
 }
 
-/* Distinct Action Pill that never overlaps */
-.card-action-pill {
-  font-size: 0.95rem;
-  font-weight: 800;
-  color: var(--brand-inno);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  white-space: nowrap;
+/* Full-width View Details button at the bottom of each problem card */
+.card-view-btn {
+  display: block;
+  width: calc(100% + 4rem); /* bleed past the 2rem padding on each side */
+  margin-left: -2rem;
+  margin-right: -2rem;
+  margin-top: 1.25rem;
+  text-align: center;
+  padding: 1rem 1.5rem;
   background: var(--brand-inno-subtle);
-  padding: 0.4rem 0.9rem;
-  border-radius: var(--radius-pill);
-  transition: all var(--transition-fast);
+  color: var(--brand-inno);
+  font-weight: 800;
+  font-size: 1rem;
+  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+  transition: background var(--transition-fast), color var(--transition-fast);
+  letter-spacing: 0.01em;
 }
-.problem-card:hover .card-action-pill {
+.problem-card:hover .card-view-btn {
   background: var(--brand-inno);
   color: white;
 }
@@ -911,7 +917,7 @@
     grid-template-columns: 1fr 1fr;
   }
   .challenge-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   }
   .detail-layout,
   .post-form-grid,
@@ -932,7 +938,6 @@
     font-size: 1.15rem;
   }
   .roles-grid,
-  .challenge-grid,
   .problems-grid {
     grid-template-columns: 1fr;
   }
@@ -957,9 +962,8 @@
     flex-direction: column;
     align-items: flex-start;
   }
-  .card-action-pill {
-    width: 100%;
-    justify-content: center;
+  .card-view-btn {
+    font-size: 0.95rem;
   }
   .tester-drawer {
     width: 100vw;
