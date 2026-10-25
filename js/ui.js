@@ -3,7 +3,7 @@
    ========================================================================== */
 
 import { state } from './state.js';
-import { CATEGORIES, STATUS_LABELS, PERSONAS, VALIDATION_TASKS } from './data.js';
+import { CATEGORIES, STATUS_LABELS, PERSONAS } from './data.js';
 
 export class UIRenderer {
   constructor(appContainer) {

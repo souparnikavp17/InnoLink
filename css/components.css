@@ -932,17 +932,17 @@
 
 @media (max-width: 768px) {
   .hero-title {
-    font-size: 2.25rem;
+    font-size: 2rem;
   }
   .hero-subtitle {
-    font-size: 1.15rem;
+    font-size: 1rem;
   }
   .roles-grid,
   .problems-grid {
     grid-template-columns: 1fr;
   }
   .detail-card {
-    padding: 1.5rem;
+    padding: 1.25rem 1.5rem;
   }
   .support-action-box {
     flex-direction: column;
@@ -963,16 +963,35 @@
     align-items: flex-start;
   }
   .card-view-btn {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
   .tester-drawer {
     width: 100vw;
     right: -100vw;
   }
   .tester-toggle-btn {
-    right: 1.25rem;
-    bottom: 1.25rem;
+    right: 1.5rem;
+    bottom: 1.5rem;
     padding: 0.65rem 1.15rem;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+  }
+  .challenge-card-box {
+    padding: 1.25rem 1.25rem;
+  }
+  .challenge-title {
+    font-size: 1.1rem;
+  }
+  .challenge-desc {
+    font-size: 0.9rem;
+  }
+  .bounty-amount {
+    font-size: 1.2rem;
+  }
+  .role-card {
+    padding: 1.25rem 1.5rem;
+  }
+  .challenge-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 }

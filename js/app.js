@@ -1,31 +1,10 @@
-/* ==========================================================================
-   InnoLink Main Application Controller
-   ========================================================================== */
-
 import { state } from './state.js';
 import { Router } from './router.js';
 import { UIRenderer } from './ui.js';
-import { PERSONAS } from './data.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const appContainer = document.getElementById('app');
   const ui = new UIRenderer(appContainer);
-
-  // Initialize Persona Switcher in the top tester bar
-  const personaSelect = document.getElementById('persona-select');
-  if (personaSelect) {
-    personaSelect.innerHTML = PERSONAS.map(p => `
-      <option value="${p.id}" ${state.getActivePersona() === p.id ? 'selected' : ''}>
-        Role: ${p.label}
-      </option>
-    `).join('');
-
-    personaSelect.addEventListener('change', (e) => {
-      state.setActivePersona(e.target.value);
-      const persona = PERSONAS.find(p => p.id === e.target.value);
-      ui.showToast(`Active perspective switched to: ${persona.label}`, 'info');
-    });
-  }
 
   // Setup Routes
   const routes = {
@@ -40,9 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const router = new Router(routes);
   router.init();
-
-  // Initialize Usability Tester Hub drawer & webhook integration
-  ui.initTesterHub();
 
   // Mobile menu drawer toggle
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -64,5 +40,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  console.log("InnoLink Platform initialized with Usability Tester Hub.");
+  console.log("InnoLink Platform initialized.");
 });
